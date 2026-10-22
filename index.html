@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#14532d">
+<title>IELTS Writing Task 2 Trainer — Band 7.5</title>
+<style>
+:root{
+  --bg:#f4f7ec; --paper:#ffffff; --ink:#1c2a17; --muted:#5f6d5a;
+  --line:#dde6cf; --brand:#166534; --brand-soft:#e3f5d4; --brand-deep:#14532d;
+  --lime:#65a30d; --lime-hot:#84cc16; --lime-soft:#ecfccb;
+  --ok:#15803d; --ok-soft:#e8f7ee; --warn:#c2410c; --warn-soft:#ffedd5;
+  --bad:#b91c1c; --bad-soft:#fdeaea; --tip:#b45309; --tip-soft:#fef3c7;
+  --radius:14px; --shadow:0 2px 10px rgba(28,42,23,.08);
+  --t1:#166534; --t2:#65a30d; --t3:#ea580c; --t4:#b45309; --t5:#4d7c0f; --t6:#ca8a04;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%;}
+body{background:var(--bg); color:var(--ink); font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif; line-height:1.55; min-height:100vh;}
+.serif{font-family:Georgia,"Times New Roman",serif;}
+button{font:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent;}
+button:focus-visible, a:focus-visible, textarea:focus-visible{outline:3px solid #a3e635; outline-offset:2px;}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+.topbar-in{max-width:1180px; margin:0 auto; padding:10px 16px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
+.logo{display:flex; align-items:center; gap:10px; font-weight:800; font-size:17px; text-decoration:none; color:var(--ink);}
+.logo-badge{background:var(--brand); color:#fff; border-radius:9px; padding:4px 9px; font-size:13px; letter-spacing:.4px;}
+.nav{margin-left:auto; display:flex; gap:8px;}
+.nav a{text-decoration:none; color:var(--ink); font-weight:600; font-size:14px; padding:9px 14px; border-radius:10px; min-height:44px; display:inline-flex; align-items:center;}
+.nav a:hover{background:var(--brand-soft);}
+.nav a.active{background:var(--brand); color:#fff;}
+
+.wrap{max-width:1180px; margin:0 auto; padding:22px 16px calc(90px + env(safe-area-inset-bottom));}
+
+/* ---------- home ---------- */
+.hero{background:linear-gradient(120deg,#14532d 0%,#166534 45%,#65a30d 82%,#84cc16 100%); color:#fff; border-radius:20px; padding:34px 28px; margin-bottom:26px; box-shadow:0 6px 22px rgba(20,83,45,.28);}
+.hero h1{font-size:clamp(24px,4vw,36px); margin-bottom:8px;}
+.hero h1::after{content:""; display:block; width:90px; height:5px; border-radius:99px; margin-top:12px; background:linear-gradient(90deg,#fbbf24,#fb923c);}
+.hero p{opacity:.92; max-width:640px; font-size:15.5px;}
+.hero .stats{display:flex; gap:14px; margin-top:18px; flex-wrap:wrap;}
+.hero .stat{background:rgba(255,255,255,.14); border-radius:12px; padding:10px 16px; font-size:14px;}
+.hero .stat b{font-size:20px; display:block;}
+.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:18px;}
+.card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:20px; display:flex; flex-direction:column; gap:10px;}
+.type-card{border-top:5px solid var(--tc,var(--brand));}
+.type-card .num{width:38px; height:38px; border-radius:10px; background:var(--tc,var(--brand)); color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; font-size:17px;}
+.type-card h2{font-size:19px;}
+.type-card .sub{color:var(--muted); font-size:13.5px; margin-top:-6px;}
+.tag{display:inline-block; font-size:11px; font-weight:700; letter-spacing:.6px; padding:3px 9px; border-radius:99px; background:var(--brand-soft); color:var(--brand); text-transform:uppercase; width:max-content;}
+.progress-line{display:flex; align-items:center; gap:10px; font-size:13px; color:var(--muted);}
+.bar{flex:1; height:8px; background:#e4ebd6; border-radius:99px; overflow:hidden;}
+.bar i{display:block; height:100%; background:var(--tc,var(--brand)); border-radius:99px; transition:width .3s;}
+.card .actions{display:flex; gap:8px; margin-top:auto; flex-wrap:wrap;}
+
+/* ---------- buttons ---------- */
+.btn{border:none; border-radius:11px; padding:11px 18px; font-weight:700; font-size:14.5px; min-height:44px; display:inline-flex; align-items:center; justify-content:center; gap:8px; text-decoration:none; transition:transform .05s, box-shadow .15s;}
+.btn:active{transform:scale(.98);}
+.btn-primary{background:var(--brand); color:#fff;}
+.btn-primary:hover{box-shadow:0 4px 14px rgba(22,101,52,.4);}
+.btn-ghost{background:#fff; color:var(--ink); border:1.5px solid var(--line);}
+.btn-ghost:hover{border-color:var(--brand); color:var(--brand);}
+.btn-soft{background:var(--brand-soft); color:var(--brand);}
+.btn-ok{background:var(--ok); color:#fff;}
+.btn-sm{min-height:40px; padding:8px 13px; font-size:13px; border-radius:9px;}
+.btn[disabled]{opacity:.5; cursor:not-allowed; box-shadow:none;}
+
+/* ---------- type page ---------- */
+.crumbs{font-size:13.5px; color:var(--muted); margin-bottom:14px;}
+.crumbs a{color:var(--brand); text-decoration:none; font-weight:600;}
+.type-head{display:flex; gap:16px; align-items:flex-start; margin-bottom:20px; flex-wrap:wrap;}
+.type-head .num{width:52px; height:52px; border-radius:14px; background:var(--tc); color:#fff; font-weight:800; font-size:23px; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+.type-head h1{font-size:clamp(22px,3.4vw,30px);}
+.type-head .sub{color:var(--muted);}
+.section{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px; margin-bottom:18px;}
+.section h2{font-size:18px; margin-bottom:12px; display:flex; align-items:center; gap:9px;}
+.section h2 .ico{width:30px; height:30px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; font-size:15px; background:var(--brand-soft); flex-shrink:0;}
+.trig{background:var(--tip-soft); border-left:4px solid var(--tip); border-radius:0 10px 10px 0; padding:12px 15px; margin-bottom:10px;}
+.trig .q{font-weight:700; font-style:italic;}
+.trig .n{font-size:13.5px; color:#92400e; margin-top:2px;}
+
+/* plan */
+.plan-row{display:grid; grid-template-columns:110px 1fr; gap:14px; padding:14px 0; border-bottom:1px dashed var(--line);}
+.plan-row:last-child{border-bottom:none;}
+.plan-row .pname{font-weight:800; font-size:13px; color:#fff; background:var(--tc,var(--brand)); border-radius:9px; padding:8px 10px; text-align:center; height:max-content;}
+.plan-row ul{list-style:none; display:flex; flex-direction:column; gap:5px;}
+.plan-row li{font-size:14.5px; padding-left:20px; position:relative;}
+.plan-row li::before{content:"→"; position:absolute; left:0; color:var(--tc,var(--brand)); font-weight:700;}
+
+/* phrases table */
+.phrase-cols{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px;}
+.phrase-col h3{font-size:13px; text-transform:uppercase; letter-spacing:.5px; color:var(--tc,var(--brand)); margin-bottom:8px;}
+.phrase-col .ph{background:#f7faee; border:1px solid var(--line); border-radius:9px; padding:8px 11px; font-size:13.5px; margin-bottom:7px; font-family:Georgia,serif;}
+
+/* mistakes */
+.mist{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+.mist .bad,.mist .good{border-radius:11px; padding:13px 15px; font-size:14px;}
+.mist .bad{background:var(--bad-soft); border:1px solid #f5c6c6;}
+.mist .good{background:var(--ok-soft); border:1px solid #bfe6cd;}
+.mist b{display:block; margin-bottom:3px; font-size:13px;}
+.mist .bad b{color:var(--bad);} .mist .good b{color:var(--ok);}
+.tipbox{background:var(--warn-soft); border-left:4px solid var(--warn); border-radius:0 10px 10px 0; padding:12px 15px; font-size:14px; margin-top:12px;}
+
+/* recognition quiz */
+.quiz-item{border:1px solid var(--line); border-radius:12px; padding:15px; margin-bottom:12px; background:#fbfdf4;}
+.quiz-item .task{font-family:Georgia,serif; font-size:15px; font-style:italic; margin-bottom:10px;}
+.quiz-answer{display:none; margin-top:10px; background:var(--ok-soft); border:1px solid #bfe6cd; border-radius:10px; padding:11px 14px; font-size:14px;}
+.quiz-answer.open{display:block;}
+.quiz-answer b{color:var(--ok);}
+
+/* topic list */
+.topic-row{display:flex; gap:13px; align-items:flex-start; border:1px solid var(--line); border-radius:12px; padding:15px; margin-bottom:11px; background:#fbfdf4; flex-wrap:wrap;}
+.topic-row .tno{width:30px; height:30px; border-radius:8px; background:var(--tc); color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; font-size:14px; flex-shrink:0;}
+.topic-row .tt{flex:1; min-width:220px; font-family:Georgia,serif; font-size:15px;}
+.topic-row .meta{font-size:12.5px; color:var(--muted); margin-top:3px;}
+.pill{font-size:11.5px; font-weight:700; padding:3px 10px; border-radius:99px;}
+.pill-done{background:var(--ok-soft); color:var(--ok);}
+.pill-draft{background:var(--warn-soft); color:var(--warn);}
+.pill-new{background:#e4ebd6; color:var(--muted);}
+
+/* ---------- practice ---------- */
+.practice-grid{display:grid; grid-template-columns:1fr 330px; gap:18px; align-items:start;}
+.taskbox{background:var(--paper); border:1px solid var(--line); border-left:5px solid var(--tc); border-radius:var(--radius); box-shadow:var(--shadow); padding:20px 22px; margin-bottom:16px;}
+.taskbox .task{font-family:Georgia,serif; font-size:17.5px; line-height:1.6;}
+.sticky-tools{position:sticky; top:64px; z-index:40; background:rgba(244,247,236,.94); backdrop-filter:blur(8px); padding:10px 0 12px; border-bottom:1px solid var(--line); margin-bottom:14px;}
+.tools-row{display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
+.timer{display:flex; align-items:center; gap:10px; background:var(--paper); border:1.5px solid var(--line); border-radius:12px; padding:7px 14px;}
+.timer .clock{font-size:23px; font-weight:800; font-variant-numeric:tabular-nums; letter-spacing:1px;}
+.timer.warn{border-color:var(--warn); background:var(--warn-soft);}
+.timer.warn .clock{color:var(--warn);}
+.timer.out{border-color:var(--bad); background:var(--bad-soft);}
+.timer.out .clock{color:var(--bad);}
+.timer .tbtns{display:flex; gap:6px;}
+.tbtn{border:1.5px solid var(--line); background:#fff; border-radius:9px; min-width:44px; min-height:40px; font-size:15px; font-weight:700; padding:6px 10px;}
+.tbtn:hover{border-color:var(--brand); color:var(--brand);}
+.wcount{margin-left:auto; font-size:14px; font-weight:700; background:var(--paper); border:1.5px solid var(--line); border-radius:12px; padding:10px 15px;}
+.wcount.ok{border-color:var(--ok); color:var(--ok); background:var(--ok-soft);}
+.editor-box{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px;}
+textarea.essay{width:100%; min-height:420px; border:1.5px solid var(--line); border-radius:11px; padding:15px; font-family:Georgia,serif; font-size:16.5px; line-height:1.75; resize:vertical; color:var(--ink); background:#fdfff8;}
+textarea.essay:focus{border-color:var(--brand); outline:none; box-shadow:0 0 0 3px var(--brand-soft);}
+.editor-foot{display:flex; gap:9px; margin-top:13px; flex-wrap:wrap;}
+.saved-note{font-size:12.5px; color:var(--muted); align-self:center;}
+
+/* side panel */
+.side{display:flex; flex-direction:column; gap:14px;}
+.panel{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden;}
+.panel>summary{list-style:none; cursor:pointer; padding:14px 16px; font-weight:800; font-size:14.5px; display:flex; align-items:center; gap:9px; user-select:none; min-height:48px;}
+.panel>summary::-webkit-details-marker{display:none;}
+.panel>summary .chev{margin-left:auto; transition:transform .2s; color:var(--muted);}
+.panel[open]>summary .chev{transform:rotate(180deg);}
+.panel .body{padding:0 16px 16px;}
+.plan-check label{display:flex; gap:10px; padding:8px 6px; border-radius:9px; font-size:13.5px; cursor:pointer; align-items:flex-start; min-height:44px;}
+.plan-check label:hover{background:#f4f7ec;}
+.plan-check input{width:19px; height:19px; margin-top:2px; accent-color:var(--tc,var(--brand)); flex-shrink:0;}
+.plan-check .pl{font-size:10.5px; font-weight:800; color:#fff; background:var(--tc,var(--brand)); border-radius:5px; padding:2px 6px; flex-shrink:0; margin-top:1px;}
+.plan-check input:checked+span .st{text-decoration:line-through; color:var(--muted);}
+.ph-tabs{display:flex; gap:5px; flex-wrap:wrap; margin-bottom:10px;}
+.ph-tab{border:1.5px solid var(--line); background:#fff; border-radius:99px; padding:7px 12px; font-size:12px; font-weight:700; min-height:40px;}
+.ph-tab.active{background:var(--tc,var(--brand)); color:#fff; border-color:var(--tc,var(--brand));}
+.ph-item{display:block; width:100%; text-align:left; background:#f7faee; border:1px solid var(--line); border-radius:9px; padding:9px 12px; font-size:13px; font-family:Georgia,serif; margin-bottom:6px; min-height:44px;}
+.ph-item:hover{border-color:var(--tc,var(--brand)); background:#fff;}
+.ph-item .ins{float:right; color:var(--tc,var(--brand)); font-family:inherit; font-weight:700;}
+.vocab-item{padding:8px 4px; border-bottom:1px dashed var(--line); font-size:13.5px;}
+.vocab-item:last-child{border-bottom:none;}
+.vocab-item b{font-family:Georgia,serif;}
+.vocab-item .vd{color:var(--muted); font-size:12.5px;}
+.ideas h4{font-size:12.5px; text-transform:uppercase; letter-spacing:.5px; color:var(--tc,var(--brand)); margin:10px 0 5px;}
+.ideas li{font-size:13.5px; margin-left:18px; margin-bottom:4px;}
+
+/* checklist modal */
+.overlay{position:fixed; inset:0; background:rgba(31,36,48,.55); z-index:100; display:none; align-items:center; justify-content:center; padding:16px;}
+.overlay.open{display:flex;}
+.modal{background:#fff; border-radius:18px; max-width:560px; width:100%; max-height:88vh; overflow:auto; padding:26px;}
+.modal h2{font-size:20px; margin-bottom:6px;}
+.modal .sub{color:var(--muted); font-size:14px; margin-bottom:14px;}
+.chk label{display:flex; gap:11px; padding:9px 8px; border-radius:9px; font-size:14.5px; cursor:pointer; align-items:flex-start; min-height:44px;}
+.chk label:hover{background:#f4f7ec;}
+.chk input{width:20px; height:20px; margin-top:2px; accent-color:var(--brand); flex-shrink:0;}
+.modal .mrow{display:flex; gap:9px; margin-top:18px; flex-wrap:wrap; justify-content:flex-end;}
+
+/* model answer */
+.model-box{background:#fdfff8; border:1px solid var(--line); border-radius:var(--radius); padding:22px; margin-top:16px; box-shadow:var(--shadow);}
+.model-box h3{margin-bottom:4px;}
+.model-box .wc{font-size:13px; color:var(--muted); margin-bottom:12px;}
+.model-text{font-family:Georgia,serif; font-size:16px; line-height:1.8;}
+.model-text p{margin-bottom:13px;}
+.model-text mark{background:linear-gradient(transparent 62%, #fde68a 62%); padding:0 1px; border-radius:2px;}
+.annotations{margin-top:14px; display:flex; flex-direction:column; gap:8px;}
+.ann{background:var(--tip-soft); border-left:4px solid var(--tip); border-radius:0 9px 9px 0; padding:10px 13px; font-size:13.5px;}
+.ann b{font-family:Georgia,serif;}
+
+/* my essays */
+.essay-row{display:flex; gap:13px; align-items:center; background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:15px 17px; margin-bottom:11px; box-shadow:var(--shadow); flex-wrap:wrap;}
+.essay-row .info{flex:1; min-width:220px;}
+.essay-row .tp{font-size:12px; font-weight:800; color:var(--tc,var(--brand)); text-transform:uppercase; letter-spacing:.5px;}
+.essay-row .tt{font-family:Georgia,serif; font-size:14.5px; margin:2px 0;}
+.essay-row .meta{font-size:12.5px; color:var(--muted);}
+.empty{text-align:center; padding:60px 20px; color:var(--muted);}
+.empty .big{font-size:44px; margin-bottom:10px;}
+
+.toast{position:fixed; bottom:calc(22px + env(safe-area-inset-bottom)); left:50%; transform:translateX(-50%) translateY(80px); background:var(--ink); color:#fff; padding:12px 20px; border-radius:12px; font-size:14px; font-weight:600; z-index:200; transition:transform .3s; box-shadow:0 8px 24px rgba(0,0,0,.25); max-width:92vw; text-align:center;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+
+/* ---------- responsive ---------- */
+@media (max-width:920px){
+  .practice-grid{grid-template-columns:1fr;}
+  .side{order:-1;}
+  .grid{grid-template-columns:1fr;}
+  .mist{grid-template-columns:1fr;}
+  .plan-row{grid-template-columns:1fr; gap:8px;}
+  .plan-row .pname{width:max-content;}
+  .wcount{margin-left:0;}
+  .sticky-tools{top:118px;}
+  textarea.essay{min-height:320px; font-size:16px;}
+}
+@media (max-width:480px){
+  .wrap{padding:16px 12px calc(90px + env(safe-area-inset-bottom));}
+  .hero{padding:24px 18px; border-radius:16px;}
+  .section{padding:16px;}
+  .timer .clock{font-size:20px;}
+  .taskbox{padding:16px;}
+  .taskbox .task{font-size:16px;}
+  .editor-foot .btn{flex:1 1 46%;}
+  .modal{padding:20px 16px;}
+}
+@media print{
+  .topbar,.sticky-tools,.side,.editor-foot,.nav{display:none !important;}
+  body{background:#fff;}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="logo" href="#home"><span class="logo-badge">WT2</span> IELTS Writing Trainer</a>
+    <nav class="nav">
+      <a href="#home" data-nav="home">Home</a>
+      <a href="#my" data-nav="my">My Essays <span id="myCount"></span></a>
+    </nav>
+  </div>
+</header>
+<main class="wrap" id="app"></main>
+<div class="overlay" id="overlay"><div class="modal" id="modal"></div></div>
+<div class="toast" id="toast"></div>
+<script>
+"use strict";
+
+/* ==================== DATA: THEORY FOR 6 ESSAY TYPES ==================== */
+const TYPES = [
+{
+  id:1, name:"Opinion Essay", sub:"Agree or Disagree", freq:"Most common",
+  triggers:[
+    {q:"“Do you agree or disagree?”", n:"One position — you must pick a side and argue for it."},
+    {q:"“To what extent do you agree or disagree?”", n:"Partial agreement is allowed, but your position must be clear and consistent."},
+    {q:"“What is your opinion?”", n:"Same logic: your opinion goes in the introduction and stays to the end."}
+  ],
+  quiz:[
+    {task:"In many countries, people are living longer than ever before. Do you agree or disagree that longer life expectancy is a positive development?", ans:"Opinion Essay", why:"Trigger — “Do you agree or disagree?”: one position to defend."},
+    {task:"Some people think that governments should invest in railways, while others believe it is better to invest in roads. Discuss both views and give your own opinion.", ans:"Discussion + Opinion (Type 2)", why:"Trigger — “Discuss both views”: TWO sides required, not just your opinion."},
+    {task:"To what extent do you agree or disagree that social media has had a negative impact on modern society?", ans:"Opinion Essay", why:"Trigger — “To what extent…”: still an opinion essay; a position is mandatory."}
+  ],
+  plan:[
+    {p:"INTRO", steps:["Paraphrase the task (do NOT copy its wording).","State your position clearly — your thesis, one sentence."]},
+    {p:"BODY 1", steps:["Your strongest argument.","Develop it — explain the logic (why is it true?).","A specific example: a country, a study, a real situation."]},
+    {p:"BODY 2", steps:["A second, distinct argument.","Develop it + another concrete example or evidence.","Do NOT switch sides — stay consistent."]},
+    {p:"CONCLUSION", steps:["Restate your position in different words.","Briefly summarise both arguments.","No new ideas!"]}
+  ],
+  phraseCols:[
+    ["Introduction",["I firmly agree / disagree with this view…","While some may argue that…, I believe that…","This essay will argue that…"]],
+    ["Body 1",["The most compelling reason is that…","This is primarily because…","For instance, / A clear example of this is…","This demonstrates that…"]],
+    ["Body 2",["Furthermore, / In addition to this,","Another significant reason is that…","This is particularly evident in…","As a result, / Consequently,"]],
+    ["Conclusion",["In conclusion, I strongly believe that…","For the reasons outlined above,…","It is therefore clear that…"]]
+  ],
+  mistakes:[
+    {bad:"Opinion appears only at the end", good:"Thesis goes in the INTRODUCTION. The examiner must see your view from line one."},
+    {bad:"Jumping between agree and disagree", good:"Choose agree OR disagree — and stick to it to the end."},
+    {bad:"Copying the task word for word", good:"Paraphrase: “free education” → “tuition-free access”."},
+    {bad:"Discussing both views equally", good:"This is NOT a Discussion essay. Argue YOUR position only."},
+    {bad:"Vague examples (“some people”, “many countries”)", good:"Name specifics: countries, studies, real situations."}
+  ],
+  tips:["“To what extent…” allows partial agreement, but your position must still be clear — don't sit on the fence.","One accurate complex sentence beats three messy ones."],
+  checklist:["My opinion is clearly stated in the introduction (thesis)","I did NOT copy the task wording — everything is paraphrased","Both body paragraphs support ONE position","Each body paragraph has a specific example","The conclusion only summarises — no new ideas","250+ words, spelling checked"]
+},
+{
+  id:2, name:"Discussion + Opinion", sub:"Discuss both views and give your opinion", freq:"Very common",
+  triggers:[
+    {q:"“Discuss both views and give your own opinion.”", n:"The most common trigger — two sides + your opinion."},
+    {q:"“Discuss both sides of this argument and give your opinion.”", n:"The same thing in different words."},
+    {q:"“Some people believe… Others think… Discuss.”", n:"The task always contrasts TWO opinions."}
+  ],
+  quiz:[
+    {task:"Some people think governments should spend more on public transport, while others believe building more roads is the answer. Discuss both views and give your own opinion.", ans:"Discussion + Opinion", why:"Two opposing views + “give your own opinion”."},
+    {task:"Many people now choose to study online instead of attending traditional universities. Discuss the advantages and disadvantages of this trend.", ans:"Advantages & Disadvantages (Type 3)", why:"It asks for the pros and cons of a trend, not two people's views."},
+    {task:"Some people say economic growth is the only way to end world poverty, while others say it must be stopped because it damages the environment. Discuss both views and give your own opinion.", ans:"Discussion + Opinion", why:"The classic pair “Some people say… while others say…” + your opinion."}
+  ],
+  plan:[
+    {p:"INTRO", steps:["Paraphrase the task.","Briefly acknowledge that both views exist.","State YOUR opinion clearly — the thesis goes here."]},
+    {p:"BODY 1", steps:["Present the FIRST view fairly and neutrally (even if you disagree).","An argument + a specific example."]},
+    {p:"BODY 2", steps:["Present the OPPOSING view.","Develop it with an argument + example.","Frame this paragraph so that your position looks stronger."]},
+    {p:"CONCLUSION", steps:["Summarise both views in one sentence.","Clearly restate your opinion in different words.","No new ideas!"]}
+  ],
+  phraseCols:[
+    ["Introduction",["There is considerable debate as to whether…","While some argue that…, others contend that…","This essay will examine both perspectives, before explaining why I believe…"]],
+    ["Body 1 (first view)",["Proponents of this view argue that…","On the one hand,…","One key reason for this is that…","For instance, / A clear example of this is…"]],
+    ["Body 2 (second view)",["On the other hand, / However,","Those who oppose this view claim that…","Furthermore, it can be argued that…","Consequently, / As a result,"]],
+    ["Conclusion",["In conclusion, while both views have merit,…","I firmly believe that…","On balance, the evidence suggests that…"]]
+  ],
+  mistakes:[
+    {bad:"No personal opinion at all", good:"Your view goes in the intro AND the conclusion. Mandatory for Band 7+."},
+    {bad:"Only one view discussed", good:"BOTH views must be covered — even the one you disagree with."},
+    {bad:"Fence-sitting — a blurred position", good:"Use “Some may argue…, but I believe…” — pick a side."},
+    {bad:"New ideas in the conclusion", good:"Conclusion = summary + restated opinion. Nothing new."},
+    {bad:"Copying the task wording", good:"Paraphrase key words — it directly affects Lexical Resource."}
+  ],
+  tips:["One idea per paragraph. Don't overuse “Furthermore” — vary your linking.","Mix simple and complex sentences: one flawless complex sentence beats three faulty ones."],
+  checklist:["Both views are discussed, not just one","My opinion is clear in the intro and restated in the conclusion","Each body paragraph has ONE main idea","Linking used: On the one hand / However / As a result","At least one complex sentence per paragraph","Conclusion has no new ideas; 250–280 words"]
+},
+{
+  id:3, name:"Advantages & Disadvantages", sub:"No personal opinion needed", freq:"Common",
+  triggers:[
+    {q:"“Discuss the advantages and disadvantages…”", n:"A balanced analysis — no opinion asked."},
+    {q:"“What are the advantages and disadvantages of…?”", n:"The same thing in question form."},
+    {q:"⚠ “Do the advantages outweigh the disadvantages?”", n:"That is a DIFFERENT type (see Type 6) — you must say which side is stronger!"}
+  ],
+  quiz:[
+    {task:"The number of people working from home has increased significantly. Discuss the advantages and disadvantages of remote working.", ans:"Adv & Disadv (Type 3)", why:"Only a balanced analysis is requested — no opinion."},
+    {task:"Some people argue that social media does more harm than good. To what extent do you agree or disagree?", ans:"Opinion (Type 1)", why:"“To what extent…” — an opinion essay, not an analysis of pros and cons."},
+    {task:"In some countries, fast food is replacing traditional home-cooked meals. What are the advantages and disadvantages of this development?", ans:"Adv & Disadv (Type 3)", why:"Question form — “What are the advantages and disadvantages?”."}
+  ],
+  plan:[
+    {p:"INTRO", steps:["Paraphrase the task.","State that the trend has both advantages and disadvantages.","Do NOT give your personal opinion!"]},
+    {p:"BODY 1 (Advantages)", steps:["Name the main advantage in the topic sentence.","Explain why it is an advantage.","A specific example."]},
+    {p:"BODY 2 (Disadvantages)", steps:["Name the main disadvantage.","Explain why it is a problem.","A specific example."]},
+    {p:"CONCLUSION", steps:["Briefly summarise both sides.","Stay neutral: “the impact is mixed”.","A cautious personal comment is possible only if the task invites it."]}
+  ],
+  phraseCols:[
+    ["Introduction",["There are both advantages and disadvantages to…","This trend has both positive and negative implications…","This essay will examine the benefits and drawbacks of…"]],
+    ["Body 1 (Advantages)",["One significant advantage is that…","A key benefit of this is…","For instance, / A clear example of this is…","This means that… / As a result,"]],
+    ["Body 2 (Disadvantages)",["However, there are also notable drawbacks.","One major disadvantage is that…","This can lead to… / This results in…","For example, / In particular,"]],
+    ["Conclusion",["In conclusion, while … has clear benefits, it also carries significant drawbacks.","Overall, the impact of … is mixed."]]
+  ],
+  mistakes:[
+    {bad:"Only advantages OR only disadvantages", good:"Both sides — one full paragraph each, equally developed."},
+    {bad:"A strong personal opinion throughout", good:"Neutral, analytical tone — this is not an Opinion essay."},
+    {bad:"Pros and cons mixed in one paragraph", good:"Body 1 — advantages only, Body 2 — disadvantages only."},
+    {bad:"Confusing this with the “outweigh” task (Type 6)", good:"“Outweigh” requires choosing the stronger side — this one does NOT."},
+    {bad:"Listing without explaining", good:"Each point: state it → explain it → specific example."}
+  ],
+  tips:["Vary your lexis: advantage / benefit / merit / strength — drawback / downside / limitation.","“It can be argued that…” / “This has led to…” add grammatical range."],
+  checklist:["BOTH advantages and disadvantages covered — roughly equally","Neutral tone: no “I believe” in the body paragraphs","Each point developed: statement → explanation → example","Varied vocabulary for benefits/drawbacks (not one repeated word)","Neutral conclusion with no new ideas","250+ words"]
+}
+];
+
+TYPES.push(
+{
+  id:4, name:"Problem & Solution", sub:"Causes → Solutions", freq:"Common",
+  triggers:[
+    {q:"“What are the causes of this and what solutions can be suggested?”", n:"Two parts: causes + solutions, equally weighted."},
+    {q:"“Why is this happening and what can be done…?”", n:"The same logic in different words."},
+    {q:"“What problems does this cause? What measures could be taken?”", n:"Problems → measures. Solutions must match the causes!"}
+  ],
+  quiz:[
+    {task:"Traffic congestion in major cities is becoming increasingly serious. What are the main causes of this issue and what measures could be taken to address it?", ans:"Problem & Solution", why:"Trigger: “main causes” + “measures to address it”."},
+    {task:"Some people think that the government should ban fast food advertising aimed at children. To what extent do you agree or disagree?", ans:"Opinion (Type 1)", why:"“To what extent…” — your position only, no solutions."},
+    {task:"The number of young people suffering from mental health problems has risen significantly. Why is this happening and what can be done to improve the situation?", ans:"Problem & Solution", why:"Trigger: “Why is this happening?” + “what can be done?”."}
+  ],
+  plan:[
+    {p:"INTRO", steps:["Paraphrase the task.","State that the problem has clear causes and workable solutions (preview both parts)."]},
+    {p:"BODY 1 (Causes)", steps:["Name 1–2 main causes.","Explain the mechanism: WHY does each cause lead to the problem?","A specific, real example."]},
+    {p:"BODY 2 (Solutions)", steps:["Propose realistic solutions — each one answers a cause from Body 1!","Explain HOW each solution would work.","Use modals and conditionals: could, should, If… were introduced, …would improve."]},
+    {p:"CONCLUSION", steps:["Summarise the problem and the solutions.","Explain why action matters.","End with a forward-looking statement, no new ideas."]}
+  ],
+  phraseCols:[
+    ["Introduction",["… has become an increasingly serious concern.","This issue has a number of identifiable causes…","…and several practical solutions can be proposed."]],
+    ["Body 1 (Causes)",["One of the main causes of this is…","This is largely due to… / This stems from…","As a result, / This leads to…","For instance, / A clear example of this is…"]],
+    ["Body 2 (Solutions)",["One effective solution would be to…","Governments / Schools could… / should…","This would help to… / This would reduce…","If … were implemented, … would improve."]],
+    ["Conclusion",["In conclusion, … poses a significant challenge…","However, with targeted measures, …","It is essential that action is taken to…"]]
+  ],
+  mistakes:[
+    {bad:"Answering only one part (causes OR solutions)", good:"Both parts fully developed, with equal weight."},
+    {bad:"A list of solutions with no explanation of how they work", good:"Each solution: state it → explain the mechanism → modal verb."},
+    {bad:"Solutions not linked to the causes in Body 1", good:"Cause “factory emissions” → solution “stricter emissions rules”. Keep the chain!"},
+    {bad:"Personal opinion instead of analysis", good:"Analytical tone: could / would / might instead of “I think”."},
+    {bad:"Vague causes (“pollution is caused by many things”)", good:"Name specific causes: transport, industry, energy production."}
+  ],
+  tips:["The cause → solution link is what the examiner scores most in Task Response.","Conditionals in Body 2 lift both grammar and logic at once."],
+  checklist:["I answered BOTH “why” and “what to do”","Each solution directly answers a specific cause","For each solution I explained HOW it works","I used could / should / would and If… were…, …would…","Analytical tone, no “I think” in body paragraphs","250+ words"]
+},
+{
+  id:5, name:"Double Question", sub:"Direct Question (two questions)", freq:"Common",
+  triggers:[
+    {q:"Two question marks in the task", n:"Always TWO separate questions — both need full answers."},
+    {q:"Question 1 is factual: “Why…? What…? How…?”", n:"Reasons or factors required."},
+    {q:"Question 2 is evaluative: “Do you think…? Is it positive or negative?”", n:"Your evaluation with justification required."}
+  ],
+  quiz:[
+    {task:"The number of people choosing to live alone has increased in many countries. Why do you think this is happening? Do you think this is a positive or negative development?", ans:"Double Question", why:"Two questions: “Why…?” + “Do you think…”."},
+    {task:"Some people think that the government should ban fast food. Discuss both views and give your own opinion.", ans:"Discussion + Opinion (Type 2)", why:"No two questions here — just two views to discuss."},
+    {task:"Many schools are now introducing coding as a compulsory subject. What are the reasons for this? Is it a positive or negative development?", ans:"Double Question", why:"“What are the reasons?” + “Is it positive or negative?”."}
+  ],
+  plan:[
+    {p:"INTRO", steps:["Paraphrase the topic.","Note that the task asks two questions (but don't answer them yet!)."]},
+    {p:"BODY 1 (Question 1)", steps:["Answer the FIRST question directly in the topic sentence.","1–2 developed reasons/factors.","A specific example."]},
+    {p:"BODY 2 (Question 2)", steps:["Answer the SECOND question clearly in the very first sentence (positive/negative — pick one).","Develop with reasoning + example.","A concession (“While it has benefits…”) earns marks."]},
+    {p:"CONCLUSION", steps:["Summarise your answers to BOTH questions.","Restate your evaluation in different words.","Keep it short, no new arguments."]}
+  ],
+  phraseCols:[
+    ["Introduction",["This trend has become increasingly common…","There are several reasons why this is occurring…","…and the question of whether it is beneficial deserves consideration."]],
+    ["Body 1 (Q1: reasons)",["One key reason for this trend is…","This is largely because… / This can be attributed to…","For instance, / A clear example of this is…","As a result, many people…"]],
+    ["Body 2 (Q2: verdict)",["I believe this is largely a positive / negative development.","On balance, I would argue that…","The main benefit / drawback of this is…","While … has clear benefits, I believe…"]],
+    ["Conclusion",["In conclusion, this trend is driven by…","While I acknowledge…, I believe…","Overall, this development is likely to…"]]
+  ],
+  mistakes:[
+    {bad:"Answering only ONE question", good:"Count the question marks! One answer = Task Response capped at Band 5."},
+    {bad:"Both answers mixed in one paragraph", good:"Body 1 — Q1 only, Body 2 — Q2 only. Strictly."},
+    {bad:"No clear evaluation for Q2", good:"“I believe this is largely a positive/negative development” — in the paragraph's first sentence."},
+    {bad:"Confusing this with a Discussion essay", good:"There are no two views here — answer two DIFFERENT questions."},
+    {bad:"One paragraph much longer than the other", good:"Both body paragraphs should be similar in length and depth."}
+  ],
+  tips:["Q1 — explanatory language (reasons/factors); Q2 — evaluative (I believe / on balance).","The concessive structure “While … has advantages, I believe it ultimately…” lifts your grammar score."],
+  checklist:["BOTH questions answered — each in its own paragraph","The first sentence of each body paragraph answers its question directly","A clear side chosen for Q2: positive or negative","Explanatory language (Q1) and evaluative language (Q2) used","Paragraphs roughly equal in length","250+ words"]
+},
+{
+  id:6, name:"Adv & Disadv + Opinion", sub:"Three parts: pros, cons, opinion", freq:"Common",
+  triggers:[
+    {q:"“Discuss the advantages and disadvantages AND give your own opinion.”", n:"Three mandatory parts — skipping any caps Task Response."},
+    {q:"Difference from Type 3", n:"There, no opinion is asked; here, the opinion paragraph is mandatory."},
+    {q:"“Do the advantages outweigh the disadvantages?”", n:"A close relative: you also pick the stronger side; same structure."}
+  ],
+  quiz:[
+    {task:"Remote working has become increasingly common. Discuss the advantages and disadvantages of this development.", ans:"Adv & Disadv (Type 3)", why:"No opinion requested — neutral analysis only."},
+    {task:"Many companies now allow employees to work from home. Discuss the advantages and disadvantages of this and give your own opinion.", ans:"Adv & Disadv + Opinion (Type 6)", why:"“…and give your own opinion” — the opinion paragraph is mandatory."},
+    {task:"Some people argue that zoos are beneficial, while others believe they harm animals. Discuss the advantages and disadvantages and give your own opinion.", ans:"Adv & Disadv + Opinion (Type 6)", why:"Analysis of both sides + your opinion."}
+  ],
+  plan:[
+    {p:"INTRO", steps:["Paraphrase the topic.","Acknowledge that both sides exist.","Thesis: state clearly which side you favour."]},
+    {p:"BODY 1 (Advantages)", steps:["Main advantage — in a neutral tone.","Explanation + specific example."]},
+    {p:"BODY 2 (Disadvantages)", steps:["Main disadvantage — in a neutral tone.","Explanation + specific example."]},
+    {p:"BODY 3 (Your Opinion)", steps:["Clear position: “In my view, the advantages outweigh…” — this separates Type 6 from Type 3.","Explain the reasoning behind your view.","A full paragraph — 3–4 sentences, no shorter than the others."]},
+    {p:"CONCLUSION", steps:["Briefly summarise both sides.","Restate your opinion in different words.","End with a forward-looking statement."]}
+  ],
+  phraseCols:[
+    ["Introduction",["There are both advantages and disadvantages to…","While … offers clear benefits, it also carries risks.","On balance, I believe that…"]],
+    ["Body 1 (Advantages)",["One significant advantage is that…","A key benefit of this is…","For instance, / This means that…"]],
+    ["Body 2 (Disadvantages)",["However, there are also notable drawbacks.","One major disadvantage is that…","This can lead to… / This results in…"]],
+    ["Body 3 (Opinion)",["In my view, the advantages outweigh the drawbacks.","I firmly believe that… / I would argue that…","The most compelling reason for this view is…","Ultimately, I think…"]],
+    ["Conclusion",["In conclusion, while … has clear merits,…","I firmly believe its benefits make it worthwhile.","For the reasons outlined above,…"]]
+  ],
+  mistakes:[
+    {bad:"Opinion paragraph missing", good:"THREE body paragraphs required: advantages, disadvantages AND opinion. No Body 3 = capped Task Response."},
+    {bad:"Opinion smeared across Bodies 1–2", good:"Bodies 1–2 stay neutral. Personal view — only in Body 3 (signal: “In my view…”)."},
+    {bad:"Confusing this with Type 3", good:"“And give your own opinion” in the task changes the whole structure."},
+    {bad:"No thesis in the introduction", good:"State which side you favour right away — it frames the whole essay."},
+    {bad:"Body 3 too short", good:"The opinion paragraph is as developed as the rest: position → reasoning → nuance (condition/concession)."}
+  ],
+  tips:["Bodies 1–2: advantage / benefit / drawback. Body 3: I firmly believe / I would argue. Don't mix registers.","“While … has clear merits, I believe…” — concession + opinion in one sentence."],
+  checklist:["All THREE body paragraphs present: pros, cons, opinion","Thesis in the intro — my favoured side is visible","Bodies 1–2 neutral, opinion only in Body 3","Body 3 developed (3–4 sentences) with reasoning and nuance","Conclusion summarises and restates the opinion, no new ideas","280+ words"]
+}
+);
+
+/* ==================== DATA: 18 TOPICS ==================== */
+const TOPICS = {
+1:[
+{
+ id:"1-1",
+ task:"Some people believe that celebrities should not be allowed to advertise products they do not use themselves. To what extent do you agree or disagree?",
+ labels:["Ideas if you AGREE","Ideas if you DISAGREE"],
+ ideas:[
+  ["Fans trust celebrities and may buy unsuitable or harmful products","Paid praise is essentially dishonest if the star has never used the item","Young audiences are especially easy to influence","Regulators already fine misleading adverts — celebrity ads should be no different"],
+  ["Advertising is acting — nobody believes it literally","A free market allows any legal promotion","Celebrities would simply lose income; the products would still be sold","It is the buyer’s responsibility to check what they purchase"]
+ ],
+ vocab:[
+  ["endorsement","public approval of a product by a famous person"],
+  ["misleading","giving the wrong idea or impression"],
+  ["credibility","the quality of being trusted and believed"],
+  ["exploit","to use something unfairly for your own advantage"],
+  ["vulnerable","easily harmed or influenced"],
+  ["accountable","responsible for your actions"],
+  ["advertising standards","official rules about what adverts may claim"],
+  ["consumer trust","how much buyers believe sellers and adverts"]
+ ],
+ model:"It has become common for famous actors, athletes and influencers to promote products ranging from cosmetics to financial services. {{I firmly agree that celebrities should not advertise products they have never used}}, because such endorsements mislead consumers and weaken trust in advertising as a whole.\n\nThe most compelling reason is that celebrity marketing works precisely because fans trust the person delivering the message. When a well-known figure praises a skincare product or an energy drink, many buyers assume the recommendation is genuine. {{If the celebrity has never used the item, this trust is exploited}}, and vulnerable groups, particularly teenagers, may spend money on ineffective or even harmful products. A clear example of this is the repeated scandals in which influencers promoted weight-loss products that they did not use and that health experts later criticised as dangerous.\n\nFurthermore, allowing dishonest endorsements damages the advertising industry itself. If consumers come to believe that every paid promotion is false, they will eventually ignore all advertising, including honest campaigns. This is why regulators in countries such as the United Kingdom already fine companies for misleading claims; {{there is no logical reason why a celebrity’s false claim should be treated more leniently}} than a company’s one.\n\nIn conclusion, I strongly believe that public figures should only advertise products they genuinely use. This would protect consumers, especially the young, and preserve what remains of consumer trust in advertising.",
+ notes:[
+  ["I firmly agree that…","Thesis in the very first paragraph — a Band 7+ marker."],
+  ["this trust is exploited","Precise academic verb instead of the vague “people are tricked”."],
+  ["there is no logical reason why…","A complex argumentative structure — lifts GRA and TR."]
+ ]
+},
+{
+ id:"1-2",
+ task:"Some people think that public libraries are no longer necessary because all information is available online, and that their funding should be redirected to improving internet access. Do you agree or disagree?",
+ labels:["Ideas if you DISAGREE (libraries matter)","Ideas if you AGREE (fund internet access)"],
+ ideas:[
+  ["Libraries give free access to those without devices or fast internet — the digital divide is real","Librarians teach people to evaluate sources, which the internet cannot do alone","Libraries are quiet study spaces and community centres, not just book storage","Elderly people and job seekers rely on library computers and staff help"],
+  ["Online access is cheaper per user than maintaining buildings","Most information is indeed digital now; printed collections age quickly","Better broadband would benefit entire regions, not only library visitors","E-books and online courses can replace many library services"]
+ ],
+ vocab:[
+  ["digital divide","the gap between people who have internet access and those who do not"],
+  ["funding","money provided by the government or an organisation"],
+  ["community hub","a place where local people meet and use shared services"],
+  ["literacy","the ability to read and write; also: digital literacy"],
+  ["marginalised groups","people with little power or money in society"],
+  ["redirect","to use money or resources for a different purpose"],
+  ["free at the point of use","available without paying when you use it"],
+  ["quiet study space","a calm place where people can concentrate"]
+ ],
+ model:"Although almost any fact can now be found within seconds online, {{I strongly disagree that public libraries have become unnecessary}}. In my view, they remain essential, above all for people whom the digital world has left behind.\n\nThe most compelling reason is that libraries guarantee equal access to information. Not everyone owns a laptop or can afford fast broadband; for low-income families, students and the elderly, the library is often the only free point of access to computers, printers and reliable internet. Closing libraries in order to fund internet access would be self-defeating: {{it would remove the very place where people with poor connectivity go to get online}}. In the United Kingdom, for example, libraries report millions of visits each year from job seekers who depend on their computers to apply for work.\n\nFurthermore, libraries offer something the internet cannot: human guidance and shared space. Librarians help visitors judge whether a source is trustworthy — a skill that matters more, not less, in the age of fake news. Libraries also function as community hubs, hosting reading clubs, language courses and coding classes for children. {{These services strengthen social ties}} in a way that isolated browsing at home never will.\n\nIn conclusion, I firmly believe that funding should continue to support public libraries. Rather than replacing them with internet access, governments should treat the two as partners in giving every citizen a fair chance to learn.",
+ notes:[
+  ["I strongly disagree that…","A clear position from the first paragraph."],
+  ["self-defeating: it would remove…","Conditional structure explaining the logic — strong GRA."],
+  ["These services strengthen social ties","Precise verb + noun instead of a generic “it is good”."]
+ ]
+},
+{
+ id:"1-3",
+ task:"Some people believe that handwriting lessons should be removed from the primary school curriculum and replaced with typing skills. To what extent do you agree or disagree?",
+ labels:["Ideas if you DISAGREE (keep handwriting)","Ideas if you AGREE (switch to typing)"],
+ ideas:[
+  ["Writing by hand improves memory and understanding — proven in note-taking studies","Fine motor skills develop through handwriting","Exams, forms and signatures still require handwriting","Handwriting can coexist with typing — one need not replace the other"],
+  ["Most adult writing happens on keyboards — school should prepare for real life","Typing is faster, so children can focus on ideas, not letter shapes","Digital texts are easier to correct, share and store","Lesson time is limited; typing is the more practical skill"]
+ ],
+ vocab:[
+  ["curriculum","the subjects officially taught at school"],
+  ["fine motor skills","control of small hand and finger movements"],
+  ["retention","the ability to keep information in memory"],
+  ["legible","clear enough to be read"],
+  ["obsolete","no longer needed because something newer exists"],
+  ["cognitive development","the growth of thinking skills in children"],
+  ["touch typing","typing without looking at the keyboard"],
+  ["coexist","to exist together at the same time"]
+ ],
+ model:"As keyboards replace pens in most workplaces, some argue that teaching young children handwriting is a poor use of lesson time. {{I largely disagree with this view}}: although typing is undeniably important, handwriting supports children’s development in ways that a keyboard cannot reproduce.\n\nThe most compelling reason is that writing by hand aids learning itself. Research consistently shows that pupils who take handwritten notes remember and understand material better than those who type, because forming letters by hand forces the brain to process and summarise information. Removing handwriting lessons could therefore weaken children’s cognitive development rather than modernise it. {{This is particularly evident in early primary education}}, where learning letter shapes and learning to read are closely linked.\n\nFurthermore, handwriting remains necessary in everyday adult life. Official forms, signed documents, written examinations and even a personal birthday card all require legible handwriting. A generation unable to write by hand would face real practical difficulties. For instance, most British secondary school exams are still completed on paper, so {{poor handwriting can directly cost pupils marks}} if examiners cannot read their answers.\n\nIn conclusion, I strongly believe that typing should be added to the curriculum but not at the expense of handwriting. The two skills serve different purposes, and primary schools should teach both.",
+ notes:[
+  ["I largely disagree","“To what extent” allows partial agreement — the position is still clear."],
+  ["Research consistently shows that…","Academic reference to evidence without invented figures."],
+  ["poor handwriting can directly cost pupils marks","A concrete, real-life consequence — strong Task Response."]
+ ]
+}
+],
+2:[
+{
+ id:"2-1",
+ task:"Some people believe that private cars should be banned from city centres, while others argue that this would harm local businesses and residents. Discuss both views and give your own opinion.",
+ labels:["View 1: support the ban","View 2: the ban does harm"],
+ ideas:[
+  ["Cleaner air and fewer emissions in densely populated areas","Safer, more pleasant streets for pedestrians and cyclists","Successful examples: car-free zones in Oslo, Madrid, Ghent","More space for cafés, parks and public life"],
+  ["Shops lose customers who arrive by car; deliveries become harder","Elderly and disabled residents depend on door-to-door transport","Commuters may face longer, more expensive journeys","Bans can push traffic and pollution to neighbouring districts"]
+ ],
+ vocab:[
+  ["pedestrian zone","a street area where cars are not allowed"],
+  ["emissions","gases released into the air, e.g. by vehicles"],
+  ["congestion","a situation with too much traffic"],
+  ["park-and-ride","car parks outside the centre linked to public transport"],
+  ["delivery access","the ability of shops to receive goods by vehicle"],
+  ["air quality","how clean or polluted the air is"],
+  ["phase in","to introduce something gradually"],
+  ["exemption","official permission not to follow a rule"]
+ ],
+ model:"The question of whether private cars should be excluded from city centres is widely debated. {{While some argue that such bans create cleaner and safer urban spaces, others contend that they damage local economies}}. This essay will examine both perspectives, before explaining why I believe a carefully designed ban is beneficial.\n\nOn the one hand, supporters of car-free centres point to dramatic improvements in public health and urban life. Removing vehicles reduces air pollution and road accidents, and frees space for pedestrians, cyclists and outdoor cafés. For example, after Madrid restricted traffic in its central district, nitrogen dioxide levels fell sharply and footfall in local shops actually increased. {{This suggests that a ban can benefit both lungs and businesses}} when alternative transport is provided.\n\nOn the other hand, opponents raise legitimate practical concerns. Many retailers fear losing customers who prefer to drive directly to their doors, and delivery vehicles face higher costs and delays. In addition, residents with limited mobility, such as the elderly or people with disabilities, may find themselves cut off from essential services. A poorly planned ban could simply push congestion into surrounding neighbourhoods rather than solving it.\n\nIn conclusion, while both views have merit, {{I firmly believe that city centres should be closed to private cars, provided that exemptions for residents and deliveries are made and park-and-ride schemes are offered}}. The evidence from European cities indicates that the long-term gains in health and quality of life outweigh the short-term inconvenience.",
+ notes:[
+  ["While some argue…, others contend that…","Classic Discussion essay opening: both views in one sentence."],
+  ["This suggests that a ban can benefit…","Links the example to the paragraph’s point — a Coherence marker."],
+  ["provided that exemptions… are made","Conditional nuance in the final opinion — typical Band 7+ quality."]
+ ]
+},
+{
+ id:"2-2",
+ task:"Some people think that every child should learn to play a musical instrument at school, while others believe this is a poor use of limited lesson time. Discuss both views and give your own opinion.",
+ labels:["View 1: music for everyone","View 2: a waste of time"],
+ ideas:[
+  ["Music training improves memory, concentration and even maths results","Learning an instrument teaches discipline and patience","Creative subjects balance an exam-focused curriculum","Group music-making builds cooperation and confidence"],
+  ["Lesson time is scarce; literacy, maths and science come first","Forced practice kills interest — music becomes a chore","Instruments and tuition are expensive for schools","Children with no musical interest gain little from compulsion"]
+ ],
+ vocab:[
+  ["compulsory","required by rules; obligatory"],
+  ["cognitive benefits","positive effects on thinking and memory"],
+  ["discipline","the ability to control your behaviour and work regularly"],
+  ["curriculum pressure","stress caused by too much content to teach"],
+  ["a chore","a boring or unpleasant task"],
+  ["transferable skills","abilities useful in many areas of life"],
+  ["extracurricular","happening outside normal lessons"],
+  ["well-rounded education","education developing many sides of a person"]
+ ],
+ model:"Whether music should be compulsory for every pupil is a question that divides educators and parents. {{While some argue that learning an instrument benefits the whole child, others claim it diverts time from core subjects}}. This essay will consider both perspectives, before explaining why I support a middle path.\n\nOn the one hand, the case for universal music education is strong. Learning an instrument develops memory, concentration and fine coordination, and studies have linked musical training to better performance in mathematics and languages. It also teaches discipline: progress requires regular practice over months and years. For instance, schools in Finland that expanded music lessons reported improvements not only in pupils’ test results but also in their behaviour and motivation. {{This demonstrates that music is not a distraction from education but a part of it}}.\n\nOn the other hand, critics argue that compulsory lessons are inefficient. School timetables are already overloaded, and an hour spent on the recorder is an hour lost to reading or science. Furthermore, children who lack musical interest may experience forced practice as a chore, which can permanently sour their attitude to music. Instruments and specialist teachers are also expensive, and many schools simply cannot afford them.\n\nIn conclusion, while both views have merit, {{I believe that every child should have the opportunity to learn an instrument, though it should not be forced on those with no interest}}. Offering short, low-cost introductory courses would allow pupils to discover their talents without sacrificing essential academic time.",
+ notes:[
+  ["This essay will consider both perspectives, before explaining why…","Previews the structure — the examiner sees the plan at once."],
+  ["studies have linked musical training to…","Academic reference to research without invented data."],
+  ["though it should not be forced…","A conditional nuance inside the opinion — a Band 7+ marker."]
+ ]
+},
+{
+ id:"2-3",
+ task:"Some people argue that governments should subsidise organic farming, while others believe that food should be produced as cheaply as possible. Discuss both views and give your own opinion.",
+ labels:["View 1: subsidise organic","View 2: food must be cheap"],
+ ideas:[
+  ["Organic farming protects soil, water and biodiversity","Fewer pesticides mean healthier food and ecosystems","Subsidies help small farms compete with industrial agriculture","Long-term environmental costs of cheap food are hidden"],
+  ["Cheap food keeps living costs down for low-income families","Organic yields are lower, so more land is needed","Subsidies distort the market and cost taxpayers money","Food security matters more than production methods"]
+ ],
+ vocab:[
+  ["subsidise","to support financially with public money"],
+  ["organic farming","farming without synthetic chemicals"],
+  ["yield","the amount of crop produced per area"],
+  ["pesticide","a chemical used to kill insects on crops"],
+  ["biodiversity","the variety of plant and animal life"],
+  ["food security","reliable access to enough affordable food"],
+  ["intensive agriculture","farming aimed at maximum output"],
+  ["taxpayer","a person who pays taxes to the government"]
+ ],
+ model:"The question of whether governments should financially support organic farming, or instead prioritise cheap food production, is increasingly relevant. {{While some argue that subsidies are essential for the environment, others insist that affordability must come first}}. This essay will examine both views, before explaining why I support targeted subsidies.\n\nOn the one hand, supporters of subsidies point to the environmental damage caused by intensive agriculture. Heavy pesticide use degrades soil, pollutes rivers and reduces biodiversity, and these costs are ultimately paid by society through healthcare and environmental repair. Organic farms, by contrast, maintain healthier ecosystems, but their lower yields make their products more expensive. {{Subsidies would allow sustainable farming to compete fairly}}, as has happened in several European Union countries where supported organic sectors have grown rapidly.\n\nOn the other hand, critics emphasise the importance of affordable food. For low-income households, even small price rises in staple foods such as bread and vegetables have a direct impact on nutrition. Organic methods typically produce less food per hectare, which means feeding a growing population organically could require converting more land to agriculture. Moreover, subsidies are funded by taxpayers, many of whom would rather see that money spent on health or education.\n\nIn conclusion, while both views have merit, {{I believe governments should subsidise organic farming selectively, focusing on the most environmentally damaging practices}}. This balanced approach would protect ecosystems without placing an unfair burden on the poorest consumers.",
+ notes:[
+  ["these costs are ultimately paid by society","Hidden costs — a mature economic argument."],
+  ["Subsidies would allow sustainable farming to compete fairly","Modal would + the mechanism of the solution."],
+  ["selectively, focusing on…","Qualifying the opinion instead of absolutes — a high-band signal."]
+ ]
+}
+]
+};
+
+TOPICS[3]=[
+{
+ id:"3-1",
+ task:"An increasing number of companies monitor their employees’ computer activity during working hours. Discuss the advantages and disadvantages of this practice.",
+ labels:["Advantages of monitoring","Disadvantages of monitoring"],
+ ideas:[
+  ["Higher productivity — fewer distractions and time-wasting","Protection of company data and prevention of leaks","Objective information for evaluating remote workers","Easier to detect harassment or policy violations"],
+  ["Destroys trust between staff and management","Constant surveillance causes stress and anxiety","Privacy concerns — personal messages may be captured","Good employees may leave for companies that trust them"]
+ ],
+ vocab:[
+  ["surveillance","close observation of people’s actions"],
+  ["productivity","the amount of work done in a given time"],
+  ["data breach","an incident where private information is stolen"],
+  ["morale","the level of confidence and enthusiasm in a group"],
+  ["accountability","being responsible for your actions at work"],
+  ["remote workforce","employees who work from home or elsewhere"],
+  ["trust","belief that someone is honest and reliable"],
+  ["invasion of privacy","interference with a person’s private life"]
+ ],
+ model:"Employee monitoring software, which records everything from keystrokes to website visits, has spread rapidly with the growth of remote work. {{This trend has both positive and negative implications}} for companies and their staff.\n\nOne significant advantage is that monitoring can improve both productivity and security. When employees know their activity is visible, they are less likely to spend paid hours on social media or personal errands. More importantly, monitoring helps companies protect sensitive information: a clear example of this is the financial sector, where surveillance systems detect unusual file transfers and prevent costly data breaches. {{For managers of remote teams, such tools also provide objective evidence}} of how working time is used, which can make evaluation fairer.\n\nHowever, there are also notable drawbacks. Constant surveillance tends to destroy the trust on which healthy workplaces depend. Employees who feel watched often report higher stress and lower morale, which can ultimately reduce the very productivity monitoring is meant to increase. This can lead to a cycle in which the most talented staff leave for employers who treat them as adults. In addition, monitoring software frequently captures personal information — private messages or medical searches — {{raising serious concerns about employees’ right to privacy}}.\n\nIn conclusion, while monitoring offers clear benefits in security and accountability, it also carries significant drawbacks in trust and staff wellbeing. Overall, the impact of this practice depends largely on how transparently and proportionately it is applied.",
+ notes:[
+  ["This trend has both positive and negative implications","Balanced opening — signals both sides will be covered."],
+  ["a clear example of this is the financial sector","A specific sector instead of the vague “some companies”."],
+  ["raising serious concerns about…","A gerund clause as a summary — grammatical range."]
+ ]
+},
+{
+ id:"3-2",
+ task:"In many supermarkets, human cashiers are being replaced by self-service checkouts. What are the advantages and disadvantages of this development?",
+ labels:["Advantages of self-checkouts","Disadvantages of self-checkouts"],
+ ideas:[
+  ["Faster checkout for small purchases, shorter queues","Lower labour costs can mean lower prices","Customers who dislike small talk prefer machines","Shops can stay open longer with fewer staff"],
+  ["Job losses for cashiers, often low-income workers","Machines frustrate elderly or less tech-confident shoppers","Errors and theft (“self-checkout fraud”) cost retailers","Loss of human contact that many shoppers value"]
+ ],
+ vocab:[
+  ["self-service checkout","a machine where customers scan and pay themselves"],
+  ["labour costs","money a company spends on workers’ wages"],
+  ["queue","a line of people waiting"],
+  ["shoplifting","stealing goods from a shop"],
+  ["tech-savvy","confident and skilled with technology"],
+  ["redundancy","loss of a job because it is no longer needed"],
+  ["customer experience","how shoppers feel about a shop"],
+  ["automation","using machines instead of human workers"]
+ ],
+ model:"Self-service checkouts, once a novelty, now dominate supermarkets across the developed world. {{There are both advantages and disadvantages to this shift}} away from human cashiers.\n\nOne significant advantage is efficiency. Customers buying only a few items can scan and pay within a minute, which shortens queues for everyone. For retailers, automation reduces labour costs, and these savings can be passed on to shoppers as lower prices. For instance, large British supermarket chains have been able to keep stores open for longer hours precisely because fewer staff are needed at the tills. {{This means that convenience is extended}} both to customers and to the businesses themselves.\n\nHowever, there are also notable drawbacks. The most serious is the impact on employment: cashier positions, which traditionally provided work for students and low-income families, are disappearing. In addition, the machines frequently frustrate shoppers — unexpected errors require staff assistance, and elderly customers in particular often find the technology confusing. {{This can lead to longer delays}} than a staffed till would have caused, as well as to increased theft, which some retailers admit costs more than the wages they saved.\n\nIn conclusion, while self-service checkouts offer clear benefits in speed and cost, they also carry significant drawbacks for workers and less confident customers. Overall, the impact of this development is mixed, and a combination of staffed tills and machines may serve shoppers best.",
+ notes:[
+  ["There are both advantages and disadvantages to…","Neutral phrasing — the correct tone for Type 3."],
+  ["These savings can be passed on to shoppers","Passive construction — grammatical variety."],
+  ["This can lead to longer delays than…","Comparative structure explaining the consequence."]
+ ]
+},
+{
+ id:"3-3",
+ task:"In several countries, cash payments are rapidly being replaced by digital payments. Discuss the advantages and disadvantages of this trend.",
+ labels:["Advantages of going cashless","Disadvantages of going cashless"],
+ ideas:[
+  ["Fast, convenient payments — no change, no queues at ATMs","Digital records reduce tax evasion and organised crime","No risk of losing cash or having it stolen","Easier budgeting — every transaction is tracked"],
+  ["Excludes elderly people and those without bank accounts","System failures or cyberattacks can paralyse payments","Every purchase is recorded — a threat to privacy","People overspend more easily when money feels abstract"]
+ ],
+ vocab:[
+  ["cashless society","a society where payments are digital only"],
+  ["transaction","a single act of paying or receiving money"],
+  ["tax evasion","illegally avoiding paying taxes"],
+  ["cyberattack","a criminal attack on computer systems"],
+  ["financial inclusion","access to banking services for everyone"],
+  ["contactless payment","paying by tapping a card or phone"],
+  ["digital footprint","the record of your online actions"],
+  ["vulnerable groups","people at risk of being left behind"]
+ ],
+ model:"The move towards a cashless society is accelerating: in countries such as Sweden, cash now accounts for a small minority of payments. {{While this development offers a number of clear benefits, it also brings significant drawbacks}} that must be considered.\n\nOne significant advantage of digital payments is their convenience and transparency. Transactions take seconds, there is no need to carry cash or visit cash machines, and every payment creates a record that helps consumers budget. For governments, the same records make tax evasion and money laundering far harder, increasing public revenue. A clear example of this is Sweden, where the near-disappearance of cash has been linked to a sharp fall in robbery and other cash-related crime.\n\nHowever, this trend also carries notable disadvantages. A fully digital system excludes people who lack bank accounts, smartphones or digital skills — typically the elderly, the poor and recent immigrants. Furthermore, electronic systems are vulnerable: a technical failure or cyberattack could leave an entire population temporarily unable to buy food or fuel. {{There is also the question of privacy}}, since a cashless economy allows banks and technology companies to track every purchase a person makes.\n\nIn conclusion, while digital payments provide efficiency and reduce crime, they also risk excluding vulnerable groups and eroding financial privacy. Overall, the impact of this trend depends largely on whether societies protect access to cash for those who still need it.",
+ notes:[
+  ["cash now accounts for a small minority of payments","Precise academic phrasing instead of “almost nobody uses cash”."],
+  ["the same records make tax evasion… harder","Parallelism between paragraphs — cohesion."],
+  ["There is also the question of privacy","A smooth move to the third argument without “Also”."]
+
+ ]
+}
+];
+
+TOPICS[4]=[
+{
+ id:"4-1",
+ task:"Many cities suffer from excessive artificial light at night, which affects both people and wildlife. What are the causes of this problem, and what measures could be taken to reduce it?",
+ labels:["Causes of light pollution","Possible solutions"],
+ ideas:[
+  ["Street lighting that shines upwards and outwards instead of downwards","Shops and offices leave lights and illuminated advertising on all night","Poorly designed, overly bright LED installations","No legal limits on night-time lighting in most cities"],
+  ["Install shielded lamps that direct light only where needed","Switch off advertising and office lighting after midnight (as in France)","Use motion sensors and dimmers in quiet areas","Create “dark sky” zones and public awareness campaigns"]
+ ],
+ vocab:[
+  ["light pollution","excessive artificial light that brightens the night sky"],
+  ["artificial lighting","human-made light, e.g. street lamps"],
+  ["wildlife","animals and birds living in nature"],
+  ["shielded lamp","a lamp that directs light downwards only"],
+  ["ordinance","a local law or regulation"],
+  ["circadian rhythm","the body’s natural sleep-wake cycle"],
+  ["energy consumption","the amount of electricity used"],
+  ["motion sensor","a device that switches on when movement is detected"]
+ ],
+ model:"Light pollution has become an increasingly serious concern in cities across the world, disrupting human sleep and confusing nocturnal wildlife. {{This problem has a number of identifiable causes, and several practical measures can be proposed}} to address it effectively.\n\nOne of the main causes is poorly designed public lighting. Many street lamps direct light upwards and sideways rather than downwards, so the night sky is illuminated instead of the road. This stems from outdated infrastructure that was installed before the environmental impact of light was understood. A second major cause is commercial lighting: shops, offices and advertising boards increasingly remain brightly lit throughout the night. For instance, in most large cities, entire shopping districts are lit at 3 a.m. despite being completely empty. {{As a result, enormous amounts of energy are wasted}} and urban residents are exposed to light around the clock, which research links to disrupted circadian rhythms.\n\nSeveral solutions could be implemented to tackle these causes directly. Municipal governments could replace old lamps with shielded LED fixtures that direct light only where it is needed, which would immediately reduce both sky glow and energy consumption. In addition, {{if lighting ordinances similar to those in France were adopted}}, shops and offices would be required to switch off illuminated signs after midnight. Such measures would help to restore natural darkness without compromising safety, since motion sensors can keep lighting available when people are actually present.\n\nIn conclusion, urban light pollution stems primarily from outdated infrastructure and unnecessary commercial lighting. However, with targeted regulation and modern technology, it is entirely possible to return the night to cities and their inhabitants.",
+ notes:[
+  ["This problem has a number of identifiable causes, and several practical measures can be proposed","Both parts previewed in the intro — clear Task Response."],
+  ["This stems from outdated infrastructure","Causal language (stems from) — exactly what the examiner looks for."],
+  ["if lighting ordinances… were adopted","Second conditional — a grammatical-range marker."]
+ ]
+},
+{
+ id:"4-2",
+ task:"Supermarkets and restaurants throw away huge amounts of edible food every day. Why does this happen, and what could be done to reduce food waste?",
+ labels:["Why food is wasted","What can be done"],
+ ideas:[
+  ["Over-ordering to keep shelves looking full","Cosmetic standards — “ugly” fruit and vegetables are rejected","Confusion over “best before” and “use by” dates","Donating is legally complicated, so bins are easier"],
+  ["Discount food near its expiry date (as many UK chains do)","Laws requiring donation of unsold food (France, 2016)","Apps that sell surplus meals cheaply (Too Good To Go)","Relax cosmetic standards and educate consumers"]
+ ],
+ vocab:[
+  ["edible","safe and suitable to eat"],
+  ["surplus","more than is needed; extra amount"],
+  ["expiry date","the date after which food should not be sold"],
+  ["cosmetic standards","rules about how food must look"],
+  ["donation","giving something free to people in need"],
+  ["supply chain","the path of food from farm to shop"],
+  ["landfill","a site where waste is buried"],
+  ["food insecurity","not having reliable access to enough food"]
+ ],
+ model:"Food waste has become an increasingly serious concern: supermarkets and restaurants discard vast quantities of edible food while millions suffer from food insecurity. {{This issue has several identifiable causes, and several practical solutions can be proposed}}.\n\nOne of the main causes is the pressure on retailers to keep shelves constantly full. Supermarkets order more than they can sell because customers associate empty shelves with poor quality, and the surplus is routinely thrown away. This is largely due to forecasting systems that prioritise appearance over efficiency. A second cause is strict cosmetic standards: perfectly edible fruit and vegetables are rejected simply because of their shape or size. For instance, farmers across Europe report that a significant share of their harvest never reaches shops at all. {{This leads to waste at every stage}} of the supply chain.\n\nSeveral solutions could address these causes directly. Governments could follow France, where a 2016 law requires large supermarkets to donate unsold edible food to charities rather than destroy it. If similar legislation were introduced elsewhere, surplus food would reach food banks instead of landfills. In addition, retailers could expand discounting of products near their expiry date and support apps such as Too Good To Go, which allow restaurants to sell surplus meals cheaply at closing time. {{These measures would reduce waste}} while also cutting costs for consumers.\n\nIn conclusion, food waste stems primarily from overstocking and unrealistic quality standards. However, with targeted legislation and wider use of redistribution technology, it is entirely possible to ensure that edible food feeds people rather than landfills.",
+ notes:[
+  ["discard vast quantities of edible food","Precise verb discard instead of plain throw away."],
+  ["If similar legislation were introduced…","Conditional + passive — double grammar credit."],
+  ["These measures would reduce waste while also cutting costs","Solution mechanism + extra effect: strong idea development."]
+ ]
+},
+{
+ id:"4-3",
+ task:"In many countries, young people are leaving rural areas to live in cities, leaving ageing populations behind. What problems does this create, and what solutions can you suggest?",
+ labels:["Problems this creates","Possible solutions"],
+ ideas:[
+  ["Villages age: schools, shops and clinics close","Shortage of workers for local farms and businesses","Elderly residents lose daily support and services","Empty housing and declining local tax income"],
+  ["Invest in rural broadband so people can work remotely","Tax incentives for companies that relocate to rural areas","Improve transport links and local healthcare","Subsidies for young families who settle in villages"]
+ ],
+ vocab:[
+  ["rural areas","the countryside; areas outside towns and cities"],
+  ["urbanisation","the movement of people from countryside to cities"],
+  ["ageing population","a population with a rising share of old people"],
+  ["broadband","fast internet connection"],
+  ["incentive","something that encourages people to act"],
+  ["depopulation","a fall in the number of inhabitants"],
+  ["local services","shops, schools, clinics in an area"],
+  ["revitalise","to bring new life and energy to a place"]
+ ],
+ model:"Rural depopulation has become an increasingly serious concern in many countries, as young people move to cities in search of education and work. {{This trend creates a number of serious problems, but several practical measures can be proposed}} to reverse it.\n\nThe most immediate problem is the collapse of local services. As the young leave, villages are left with ageing populations, and schools, shops and medical practices close because they no longer have enough customers or patients. This leads to a vicious circle: the fewer services remain, the less attractive the area becomes for the young. A second problem is economic. Farms and small businesses cannot find workers, which is largely due to the shrinking working-age population. For instance, in parts of Japan and southern Europe, entire villages have been effectively abandoned, {{with houses falling into ruin}} and local tax income disappearing.\n\nSeveral solutions could be implemented to address these problems. Governments could invest in high-speed rural broadband, allowing young professionals to work remotely while enjoying village life; if reliable internet were available everywhere, location would no longer determine career opportunities. In addition, tax incentives could encourage companies to open offices in rural towns, creating local jobs. Finally, {{improving transport links and healthcare would make these areas viable}} for young families rather than only for retirees.\n\nIn conclusion, the flight of young people from the countryside stems from limited opportunities and weak infrastructure. However, with targeted investment in connectivity and services, rural areas could once again become places where the young choose to build their lives.",
+ notes:[
+  ["a vicious circle","A precise idiom describing the problem’s mechanism."],
+  ["if reliable internet were available, location would no longer determine…","Second conditional with a clear solution mechanism."],
+  ["stems from limited opportunities","A causal verb in the conclusion — sums up the analysis."]
+ ]
+}
+];
+
+TOPICS[5]=[
+{
+ id:"5-1",
+ task:"More people than ever follow online influencers for advice on health, fitness and lifestyle. Why is this the case? Do you think it is a positive or negative development?",
+ labels:["Q1: Why people follow influencers","Q2: Points for your verdict"],
+ ideas:[
+  ["Advice is free, instant and available on a phone","Influencers feel relatable — “ordinary people”, not distant experts","Traditional institutions (doctors, media) are trusted less","Algorithms keep pushing similar content to users"],
+  ["Negative: much advice is unqualified and commercially motivated","Negative: health misinformation can cause real harm","Positive: complex topics become accessible and engaging","Positive: some creators genuinely are qualified professionals"]
+ ],
+ vocab:[
+  ["influencer","a person with many online followers who affects their choices"],
+  ["relatable","easy to identify with; feeling close to ordinary life"],
+  ["misinformation","false information spread as if it were true"],
+  ["qualified","having official training or a certificate"],
+  ["algorithm","the software that decides what content you see"],
+  ["credibility","the quality of being believable"],
+  ["commercial motive","the wish to make money from something"],
+  ["critical thinking","the skill of judging information carefully"]
+ ],
+ model:"It has become increasingly common for people, particularly the young, to take health and lifestyle advice from social media influencers. {{This trend has several identifiable causes, and whether it represents a positive or negative development is worth examining}}.\n\nOne key reason for this trend is accessibility. Influencers offer free, instantly available guidance in short, entertaining videos, whereas booking a doctor or nutritionist requires time and money. A second reason is trust: influencers present themselves as relatable, ordinary people rather than distant authorities, and their personal stories feel more convincing than official advice. For instance, a fitness creator who documents their own weight loss may inspire followers far more effectively than a government health campaign. {{This can be attributed to the way social media algorithms}} repeatedly expose users to personalities they already like.\n\nOn balance, I would argue that this is largely a negative development, despite some clear benefits. While a minority of creators are genuinely qualified professionals, much influencer advice is commercially motivated or simply wrong, and in areas such as diet and mental health, {{misinformation can cause serious harm}}. Studies suggest that young people rarely check whether the person advising them has any medical training.\n\nIn conclusion, the popularity of influencer advice is driven by convenience and relatability. While I acknowledge that some creators make health information more accessible, I believe the lack of accountability makes this trend ultimately more harmful than beneficial.",
+ notes:[
+  ["whether it represents a positive or negative development is worth examining","Both questions previewed without answering — the correct Type 5 intro."],
+  ["This can be attributed to…","Explanatory language for Q1."],
+  ["On balance, I would argue that… despite…","Evaluative language with a concession for Q2 — a Band 7 marker."]
+ ]
+},
+{
+ id:"5-2",
+ task:"Nowadays many people get their news from social media rather than from newspapers or television. Why is this happening? Is this a positive or negative development?",
+ labels:["Q1: Why news moved to social media","Q2: Points for your verdict"],
+ ideas:[
+  ["News on social media is free and arrives instantly","Feeds are personalised — people see topics they care about","Younger generations simply do not watch TV or buy papers","People can discuss and share news immediately"],
+  ["Negative: algorithms create echo chambers of similar opinions","Negative: fake news spreads faster than corrections","Positive: underreported stories and citizen journalism get attention","Positive: access to news widens for people who never read papers"]
+ ],
+ vocab:[
+  ["echo chamber","a situation where you only see opinions like your own"],
+  ["misinformation","false information presented as news"],
+  ["news feed","the stream of posts shown by a social platform"],
+  ["citizen journalism","reporting by ordinary people, not professionals"],
+  ["editorial standards","rules of accuracy that professional media follow"],
+  ["viral","spreading extremely quickly online"],
+  ["credibility","the quality of being trusted"],
+  ["personalised","adjusted to individual interests"]
+ ],
+ model:"It has become increasingly common for people to open a social media app, rather than a newspaper, when they want to know what is happening in the world. {{There are several reasons why this is occurring, and the question of whether it is beneficial deserves consideration}}.\n\nOne key reason for this trend is convenience: social media delivers news instantly, free of charge, and in a format personalised to each user’s interests. Traditional media, by contrast, requires subscriptions, fixed broadcast times and considerable patience. This can also be attributed to changing habits among the young, for whom television news and printed papers simply feel outdated. For instance, surveys in several countries show that a majority of under-30s now name social platforms as their main source of news. {{As a result, audiences that newspapers took decades to build}} are disappearing within a few years.\n\nI believe this is largely a negative development, despite its democratic potential. While social media has allowed underreported stories and citizen journalism to reach wide audiences, the same platforms allow misinformation to spread virally, because no editorial standards are applied before publication. Furthermore, algorithms tend to show users opinions they already hold, creating echo chambers that deepen social division.\n\nIn conclusion, the shift towards social media news is driven by speed, cost and personalisation. While I acknowledge its role in widening access to information, {{I believe it ultimately weakens the quality}} of public knowledge and should be treated with caution.",
+ notes:[
+  ["There are several reasons why this is occurring…","Direct preview of the Q1 answer in the intro."],
+  ["As a result, audiences… are disappearing","A consequence with specifics — development, not listing."],
+  ["I believe it ultimately weakens the quality of public knowledge","Evaluative “ultimately” — a strong close to the opinion."]
+ ]
+},
+{
+ id:"5-3",
+ task:"An increasing number of people work in jobs that did not exist twenty years ago. Why is this happening? Do you think this is a positive or negative trend?",
+ labels:["Q1: Why new jobs emerge","Q2: Points for your verdict"],
+ ideas:[
+  ["Technology creates roles: app developers, data analysts, AI trainers","New platforms create jobs: content creators, delivery riders","Social change creates demand: sustainability consultants, wellbeing coaches","Old industries shrink, so workers retrain for new fields"],
+  ["Positive: new jobs are often flexible, creative and well paid","Positive: workers develop adaptable, future-proof skills","Negative: new jobs can be insecure (gig work, zero contracts)","Negative: constant change forces stressful retraining"]
+ ],
+ vocab:[
+  ["emerging industries","new fields of business that are growing"],
+  ["gig economy","work based on short tasks rather than fixed jobs"],
+  ["retraining","learning new skills for a different job"],
+  ["job security","confidence that you will keep your job"],
+  ["adaptable","able to change for new conditions"],
+  ["automation","replacing human work with machines"],
+  ["digital skills","abilities needed to work with technology"],
+  ["career path","the planned progress of a working life"]
+ ],
+ model:"It has become increasingly common for people to earn their living in roles — app developer, data analyst, social media manager — that simply did not exist a generation ago. {{This trend has several identifiable causes, and whether it is beneficial deserves consideration}}.\n\nOne key reason is the speed of technological change. Smartphones, cloud computing and artificial intelligence have created entirely new industries, each requiring specialists that education systems twenty years ago never imagined. A second cause is the decline of traditional employment: as automation reduces jobs in manufacturing and offices, workers retrain for emerging fields. For instance, the rise of online shopping has created millions of positions in logistics and digital marketing, even as high-street retail jobs have disappeared. {{This can be attributed to the way technology}} simultaneously destroys and creates demand for labour.\n\nOn balance, I would argue that this is largely a positive development, despite real risks. New professions tend to offer flexibility, creativity and, in fields such as data science, high salaries. While it is true that some new jobs in the gig economy lack security, workers who continually update their skills become more adaptable, which is itself the best protection in a changing economy.\n\nIn conclusion, the emergence of new professions is driven by technological progress and the decline of older industries. {{While I acknowledge the insecurity of some new roles}}, I believe this trend ultimately expands human opportunity rather than limiting it.",
+ notes:[
+  ["simultaneously destroys and creates demand","Precise adverb + parallel structure — C1 level."],
+  ["On balance, I would argue that…","A classic evaluative phrase for the Q2 answer."],
+  ["While I acknowledge the insecurity of some new roles","A concession in the conclusion — a balanced ending."]
+ ]
+}
+];
+
+TOPICS[6]=[
+{
+ id:"6-1",
+ task:"Some companies have recently introduced a four-day working week with no reduction in pay. Discuss the advantages and disadvantages and give your own opinion.",
+ labels:["Advantages of a 4-day week","Disadvantages of a 4-day week"],
+ ideas:[
+  ["Better work-life balance and less burnout","Trials show productivity often stays the same or rises","Companies attract and keep talented staff","Less commuting — lower costs and emissions"],
+  ["Not suitable for hospitals, emergency services, retail","Longer working days can exhaust staff","Customers may lose service on the fifth day","Small businesses may struggle to cover the lost hours"]
+ ],
+ vocab:[
+  ["work-life balance","a healthy division of time between job and private life"],
+  ["burnout","extreme tiredness caused by too much work"],
+  ["productivity","the amount of work done in a given time"],
+  ["trial","an experiment to test an idea"],
+  ["staff retention","the ability to keep employees from leaving"],
+  ["compressed hours","the same hours fitted into fewer days"],
+  ["customer-facing","involving direct contact with customers"],
+  ["pilot scheme","a small test of a new policy"]
+ ],
+ model:"The four-day working week has moved from an idealistic proposal to a reality in companies across Europe. {{While this arrangement offers clear benefits, it also carries risks; on balance, I believe the advantages outweigh them}}.\n\nOne significant advantage is the effect on employees’ wellbeing and output. An extra free day reduces burnout and allows people to rest properly, and trials in Iceland and the United Kingdom found that productivity remained stable or even rose, because rested employees work with greater focus. A key benefit for employers is that such schemes dramatically improve staff retention: a company offering a four-day week rarely struggles to attract talent.\n\nHowever, there are also notable drawbacks. The model does not suit every sector: hospitals, emergency services and customer-facing businesses must operate five or seven days a week, and compressing forty hours into four days can exhaust staff rather than refresh them. One major disadvantage for small firms is the difficulty of covering the lost day, which can lead to reduced service and frustrated customers.\n\n{{In my view, the advantages outweigh the drawbacks, provided the model is applied flexibly}}. The most compelling reason for this view is that the evidence from large-scale trials is consistently positive for knowledge-based work, which now dominates developed economies. Sectors with continuous duties could adopt staggered schedules rather than being forced into a single pattern.\n\nIn conclusion, while the four-day week presents genuine practical challenges, {{I firmly believe its benefits for wellbeing, productivity and recruitment}} make it a worthwhile direction for most employers.",
+ notes:[
+  ["on balance, I believe the advantages outweigh them","Thesis in the intro — mandatory for Type 6."],
+  ["In my view, … provided the model is applied flexibly","An opinion with conditional nuance — a typical Band 7+ marker."],
+  ["its benefits for wellbeing, productivity and recruitment","A compact noun list — dense academic style."]
+ ]
+},
+{
+ id:"6-2",
+ task:"A growing number of cities charge tourists a daily visitor tax. Discuss the advantages and disadvantages and give your own opinion.",
+ labels:["Advantages of a tourist tax","Disadvantages of a tourist tax"],
+ ideas:[
+  ["Money funds cleaning, transport and monument preservation","Reduces the pressure of overtourism on residents","Tourists use city services — fair that they contribute","Venice and Amsterdam use it to manage crowds"],
+  ["May deter budget tourists and backpackers","Extra bureaucracy for hotels and hosts","Can damage a city’s image as unwelcoming","Small businesses fear losing customers"]
+ ],
+ vocab:[
+  ["tourist tax","a small daily charge paid by visitors"],
+  ["overtourism","too many visitors for a place to handle"],
+  ["revenue","income received by a government or business"],
+  ["infrastructure","basic systems like roads, transport, water"],
+  ["deter","to discourage someone from doing something"],
+  ["ring-fence","to reserve money for one specific purpose"],
+  ["heritage site","a place protected for its historical value"],
+  ["hospitality sector","hotels, restaurants and tourism services"]
+ ],
+ model:"Visitor taxes, once rare, are now charged by cities from Venice to Barcelona. {{While such charges offer clear benefits, they also carry risks; on balance, I believe they are a sensible policy}}.\n\nOne significant advantage is the revenue they generate for the places tourists actually use. Visitors put pressure on transport, cleaning services and historic sites without contributing to them through local taxes, and a small daily charge allows cities to repair this imbalance. For instance, Amsterdam invests its tourist tax in maintaining canals and museums, and Venice uses it to manage the enormous crowds that its residents could not otherwise afford to handle. {{This means that tourism helps to preserve}} the very attractions that draw visitors.\n\nHowever, there are also notable drawbacks. A daily charge may deter budget travellers, particularly young backpackers, who contribute to local economies in their own way. One major disadvantage is the administrative burden: hotels, guesthouses and rental hosts must collect and report the tax, which is costly for small businesses. There is also a reputational risk, since a city perceived as unwelcoming may lose visitors to cheaper rivals.\n\nIn my view, the advantages outweigh the disadvantages, {{provided the revenue is ring-fenced for tourism-related spending}}. The most compelling reason is that overtourism is destroying the character of exactly those cities that attract the most visitors; a modest, transparent charge is a small price for preserving them.\n\nIn conclusion, while visitor taxes create costs and complexity, I firmly believe that, when fairly designed, they allow tourism to sustain rather than exhaust the cities it depends on.",
+ notes:[
+  ["This means that tourism helps to preserve…","Explains the mechanism of the advantage, not just a list."],
+  ["the administrative burden","A precise economic term — Lexical Resource."],
+  ["provided the revenue is ring-fenced","A condition nuancing the opinion — a sign of a mature argument."]
+ ]
+},
+{
+ id:"6-3",
+ task:"An increasing number of parents choose to educate their children at home instead of sending them to school. Discuss the advantages and disadvantages and give your own opinion.",
+ labels:["Advantages of homeschooling","Disadvantages of homeschooling"],
+ ideas:[
+  ["Learning at the child’s own pace and interests","Flexible schedule, no commuting, safer environment","One-to-one attention that schools cannot offer","Suits children bullied or anxious at school"],
+  ["Less contact with peers — weaker social skills","Parents are rarely trained teachers in all subjects","One parent often must give up work","Fewer chances for team sports and group projects"]
+ ],
+ vocab:[
+  ["homeschooling","educating children at home instead of at school"],
+  ["pace","the speed at which someone learns"],
+  ["one-to-one attention","teaching given to a single child"],
+  ["socialisation","learning to behave with other people"],
+  ["curriculum","the subjects and content to be taught"],
+  ["flexibility","the ability to change plans easily"],
+  ["peer","a child of the same age"],
+  ["safeguarding","protecting children’s wellbeing"]
+ ],
+ model:"Homeschooling, once a marginal choice, is growing rapidly in many countries. {{While educating children at home offers clear benefits, it also carries risks; on balance, I believe it suits some families but should not replace school for most}}.\n\nOne significant advantage is that learning can be tailored to the individual child. At home, lessons move at the child’s own pace, follow their interests and provide one-to-one attention that a class of thirty cannot offer. A key benefit is flexibility: families can travel, adjust timetables and remove children from environments where they are bullied or anxious. For instance, many parents of children with special educational needs report dramatic improvements after leaving mainstream school.\n\nHowever, there are also notable drawbacks. The most serious concerns socialisation: schools are where children learn to negotiate, cooperate and form friendships with peers, and this daily practice is difficult to reproduce at home. One major disadvantage is that few parents are trained across the whole curriculum, so subjects such as physics or foreign languages may be taught weakly. Furthermore, homeschooling usually requires one parent to reduce or abandon paid work, which many households simply cannot afford.\n\nIn my view, the disadvantages outweigh the advantages for most families, {{provided a reasonable school is available}}. The most compelling reason for this view is that education is not only the transfer of knowledge but also preparation for adult society, and that preparation happens between children, not between a child and a parent.\n\nIn conclusion, while homeschooling can transform life for particular children, I firmly believe that for most, the social and academic breadth of school remains the safer foundation.",
+ notes:[
+  ["tailored to the individual child","Precise verb tailor — strong lexis."],
+  ["education is not only the transfer of knowledge but also…","The not only… but also structure with a definition — high GRA."],
+  ["provided a reasonable school is available","A condition limiting the claim — a Band 7+ nuance."]
+ ]
+}
+];
+
+
+/* ==================== ENGINE ==================== */
+const LS="wt2_trainer_v2";
+const COLORS={1:"var(--t1)",2:"var(--t2)",3:"var(--t3)",4:"var(--t4)",5:"var(--t5)",6:"var(--t6)"};
+const store={
+  get(){try{return JSON.parse(localStorage.getItem(LS))||{}}catch(e){return{}}},
+  set(d){try{localStorage.setItem(LS,JSON.stringify(d))}catch(e){}},
+  entry(tid){const d=this.get();return d[tid]||null},
+  save(tid,patch){const d=this.get();d[tid]=Object.assign(d[tid]||{},patch,{updated:Date.now()});this.set(d)},
+  remove(tid){const d=this.get();delete d[tid];this.set(d)}
+};
+const T=tid=>TYPES.find(t=>t.id===+tid.split("-")[0]);
+const TP=tid=>TOPICS[tid.split("-")[0]].find(t=>t.id===tid);
+const targetWords=tid=>+tid.split("-")[0]===6?280:250;
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const words=s=>{const t=s.trim();return t?t.split(/\s+/).length:0};
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("show"),2400)}
+function fmtDate(ts){const d=new Date(ts);return d.toLocaleDateString("en-GB",{day:"numeric",month:"short"})+", "+d.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"})}
+const isMobile=()=>window.matchMedia("(max-width:920px)").matches;
+
+/* ---------- router ---------- */
+let cur={view:"home"};
+let timer={left:2400,run:false,int:null,tid:null};
+function go(){const h=location.hash.replace("#","")||"home";
+  const [name,arg]=h.split(/-(.+)/);
+  if(name==="type"&&TYPES.find(t=>t.id===+arg))renderType(+arg);
+  else if(name==="practice"&&TP(arg))renderPractice(arg);
+  else if(name==="my")renderMy();
+  else renderHome();
+  document.querySelectorAll("[data-nav]").forEach(a=>a.classList.toggle("active",a.dataset.nav===cur.view));
+  const d=store.get();const n=Object.keys(d).filter(k=>d[k].text&&d[k].text.trim()).length;
+  document.getElementById("myCount").textContent=n?"("+n+")":"";
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",go);
+window.addEventListener("beforeunload",()=>{if(timer.tid)store.save(timer.tid,{timeLeft:timer.left})});
+
+/* ---------- home ---------- */
+function renderHome(){
+  cur={view:"home"};const d=store.get();let done=0,draft=0;
+  Object.values(d).forEach(e=>{if(e.done)done++;else if(e.text&&e.text.trim())draft++});
+  const cards=TYPES.map(t=>{
+    const tops=TOPICS[t.id];let st=0;
+    tops.forEach(tp=>{const e=d[tp.id];if(e&&(e.done||words(e.text||"")>=targetWords(tp.id)))st++});
+    return `<div class="card type-card" style="--tc:${COLORS[t.id]}">
+      <div class="num">${t.id}</div>
+      <h2>${esc(t.name)}</h2>
+      <div class="sub">${esc(t.sub)}</div>
+      <span class="tag">${esc(t.freq)}</span>
+      <div class="progress-line"><div class="bar"><i style="width:${Math.round(st/3*100)}%"></i></div><span>${st}/3</span></div>
+      <div class="actions">
+        <a class="btn btn-soft btn-sm" href="#type-${t.id}">📖 Theory &amp; plan</a>
+        <a class="btn btn-primary btn-sm" href="#type-${t.id}" style="background:${COLORS[t.id]}">✍️ Practice (3 topics)</a>
+      </div></div>`;
+  }).join("");
+  document.getElementById("app").innerHTML=`
+  <div class="hero">
+    <h1>IELTS Writing Task 2 — train your way to Band 7.5</h1>
+    <p>Six essay types, fresh topics, paragraph-by-paragraph plans, linking phrases, a 40-minute timer — and your essays saved right in this browser.</p>
+    <div class="stats">
+      <div class="stat"><b>${done}</b>essays completed</div>
+      <div class="stat"><b>${draft}</b>drafts in progress</div>
+      <div class="stat"><b>18</b>practice topics</div>
+    </div>
+  </div>
+  <div class="grid">${cards}</div>`;
+}
+
+/* ---------- type page ---------- */
+function renderType(id){
+  cur={view:"type",id};const t=TYPES.find(x=>x.id===id);const c=COLORS[id];const d=store.get();
+  const quiz=t.quiz.map(q=>`<div class="quiz-item">
+    <div class="task">“${esc(q.task)}”</div>
+    <button type="button" class="btn btn-ghost btn-sm" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'Hide answer':'Check'">Check</button>
+    <div class="quiz-answer"><b>${esc(q.ans)}</b> — ${esc(q.why)}</div>
+  </div>`).join("");
+  const plan=t.plan.map(p=>`<div class="plan-row"><div class="pname">${p.p}</div>
+    <ul>${p.steps.map(s=>`<li>${esc(s)}</li>`).join("")}</ul></div>`).join("");
+  const phrases=t.phraseCols.map(([h,arr])=>`<div class="phrase-col"><h3>${esc(h)}</h3>
+    ${arr.map(p=>`<div class="ph">${esc(p)}</div>`).join("")}</div>`).join("");
+  const mistakes=t.mistakes.map(m=>`<div class="mist" style="display:contents">
+    <div class="bad"><b>✗ Mistake</b>${esc(m.bad)}</div>
+    <div class="good"><b>✓ Do this</b>${esc(m.good)}</div></div>`).join("");
+  const topics=TOPICS[id].map((tp,i)=>{const e=d[tp.id];
+    let pill='<span class="pill pill-new">not started</span>';
+    if(e){if(e.done)pill='<span class="pill pill-done">✓ completed</span>';
+      else if(e.text&&e.text.trim())pill='<span class="pill pill-draft">draft · '+words(e.text)+' words</span>'}
+    return `<div class="topic-row" style="--tc:${c}">
+      <div class="tno">${i+1}</div>
+      <div class="tt">“${esc(tp.task)}”<div class="meta">${pill}</div></div>
+      <a class="btn btn-primary btn-sm" style="background:${c}" href="#practice-${tp.id}">${e&&e.text?"Continue":"Write"} →</a>
+    </div>`}).join("");
+  document.getElementById("app").innerHTML=`
+  <div class="crumbs"><a href="#home">← All essay types</a></div>
+  <div class="type-head" style="--tc:${c}">
+    <div class="num">${t.id}</div>
+    <div><h1>${esc(t.name)}</h1><div class="sub">${esc(t.sub)} · ${esc(t.freq)} · target: Band 7.5</div></div>
+  </div>
+  <div class="section"><h2><span class="ico">🔍</span>How to recognise this type</h2>
+    ${t.triggers.map(x=>`<div class="trig"><div class="q serif">${esc(x.q)}</div><div class="n">${esc(x.n)}</div></div>`).join("")}
+  </div>
+  <div class="section"><h2><span class="ico">🎯</span>Test yourself: which essay type is this?</h2>${quiz}</div>
+  <div class="section" style="--tc:${c}"><h2><span class="ico">🗺️</span>Writing plan</h2>${plan}
+    ${t.tips.map(x=>`<div class="tipbox">💡 ${esc(x)}</div>`).join("")}
+  </div>
+  <div class="section" style="--tc:${c}"><h2><span class="ico">🔗</span>Linking phrases by paragraph</h2><div class="phrase-cols">${phrases}</div></div>
+  <div class="section"><h2><span class="ico">👁️</span>Common mistakes — and how to avoid them</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px" class="mist-grid">${mistakes}</div>
+  </div>
+  <div class="section" style="--tc:${c}"><h2><span class="ico">✍️</span>Practice topics</h2>${topics}</div>`;
+}
+
+/* ---------- practice ---------- */
+function renderPractice(tid){
+  cur={view:"practice",tid};const type=T(tid);const tp=TP(tid);const c=COLORS[type.id];
+  const e=store.entry(tid)||{};
+  timer.left=(e.timeLeft!=null?e.timeLeft:2400);timer.run=false;timer.tid=tid;
+  clearInterval(timer.int);timer.int=null;
+  const tgt=targetWords(tid);
+  const planItems=type.plan.flatMap((p,pi)=>p.steps.map((s,si)=>({p:p.p,s:s,k:pi+"-"+si})));
+  const planHtml=planItems.map(it=>`<label><input type="checkbox" data-plan="${it.k}" ${e.plan&&e.plan[it.k]?"checked":""} onchange="App.plan('${tid}',this)">
+    <span><span class="pl">${it.p}</span> <span class="st">${esc(it.s)}</span></span></label>`).join("");
+  const phTabs=type.phraseCols.map(([h],i)=>`<button type="button" class="ph-tab ${i===0?"active":""}" data-ph="${i}" onclick="App.phTab('${tid}',${i},this)">${esc(h)}</button>`).join("");
+  const vocab=tp.vocab.map(([w,df])=>`<div class="vocab-item"><b>${esc(w)}</b> — <span class="vd">${esc(df)}</span></div>`).join("");
+  const ideas=tp.labels.map((l,i)=>`<h4>${esc(l)}</h4><ul>${tp.ideas[i].map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`).join("");
+  document.getElementById("app").innerHTML=`
+  <div class="crumbs"><a href="#type-${type.id}">← ${esc(type.name)}</a> · Topic ${tid.split("-")[1]}</div>
+  <div class="taskbox" style="--tc:${c}">
+    <span class="tag" style="background:${c}1a;color:${c}">${esc(type.name)}</span>
+    <div class="task" style="margin-top:8px">${esc(tp.task)}</div>
+  </div>
+  <div class="sticky-tools"><div class="tools-row">
+    <div class="timer" id="timerBox">
+      <span class="clock" id="clock">40:00</span>
+      <div class="tbtns">
+        <button type="button" class="tbtn" id="tPlay" onclick="App.tPlay()" title="Start / Pause">▶</button>
+        <button type="button" class="tbtn" onclick="App.tReset()" title="Restart">↺</button>
+      </div>
+    </div>
+    <div class="wcount" id="wcount">0 words · target ${tgt}+</div>
+  </div></div>
+  <div class="practice-grid">
+    <div>
+      <div class="editor-box">
+        <textarea class="essay" id="essay" placeholder="Write your essay here… Your text is saved automatically in this browser." oninput="App.typing('${tid}')">${esc(e.text||"")}</textarea>
+        <div class="editor-foot">
+          <button type="button" class="btn btn-ok" onclick="App.finish('${tid}')">✓ Finish &amp; check</button>
+          <button type="button" class="btn btn-ghost" onclick="App.exportEssay('${tid}','docx')">⬇ Word (.docx)</button>
+          <button type="button" class="btn btn-ghost" onclick="App.exportEssay('${tid}','doc')">⬇ Word (.doc)</button>
+          <button type="button" class="btn btn-ghost" onclick="App.clearEssay('${tid}')">🗑 Clear</button>
+          <span class="saved-note" id="savedNote">${e.updated?"Saved: "+fmtDate(e.updated):""}</span>
+        </div>
+      </div>
+      <div id="modelSlot">${e.done?modelHtml(tp):""}</div>
+    </div>
+    <div class="side">
+      <details class="panel" open style="--tc:${c}"><summary>🗺️ Writing plan <span class="chev">▾</span></summary>
+        <div class="body plan-check">${planHtml}</div></details>
+      <details class="panel" open style="--tc:${c}"><summary>🔗 Linking phrases <span class="chev">▾</span></summary>
+        <div class="body"><div class="ph-tabs">${phTabs}</div><div id="phList"></div>
+        <div class="saved-note">Click a phrase to insert it into your essay.</div></div></details>
+      <details class="panel" open style="--tc:${c}"><summary>💡 Ideas for arguments <span class="chev">▾</span></summary>
+        <div class="body ideas">${ideas}</div></details>
+      <details class="panel" open style="--tc:${c}"><summary>📚 Topic vocabulary <span class="chev">▾</span></summary>
+        <div class="body">${vocab}</div></details>
+    </div>
+  </div>`;
+  if(isMobile()){
+    const panels=document.querySelectorAll(".side details.panel");
+    panels.forEach((p,i)=>{if(i>0)p.open=false});
+  }
+  App.phTab(tid,0);
+  App.typing(tid,true);
+  drawClock();
+}
+function modelHtml(tp){
+  const paras=tp.model.split("\n\n").map(p=>`<p>${esc(p).replace(/\{\{(.+?)\}\}/g,"<mark>$1</mark>")}</p>`).join("");
+  const notes=tp.notes.map(([ph,why])=>`<div class="ann"><b>“${esc(ph)}”</b> — ${esc(why)}</div>`).join("");
+  return `<div class="model-box"><h3>⭐ Model answer — Band 7.5</h3>
+    <div class="wc">≈${words(tp.model)} words · highlighted phrases explained below</div>
+    <div class="model-text">${paras}</div>
+    <div class="annotations">${notes}</div></div>`;
+}
+
+/* ---------- my essays ---------- */
+function renderMy(){
+  cur={view:"my"};const d=store.get();
+  const ids=Object.keys(d).filter(k=>d[k].text&&d[k].text.trim()).sort((a,b)=>(d[b].updated||0)-(d[a].updated||0));
+  const rows=ids.map(tid=>{
+    const type=T(tid),tp=TP(tid);if(!type||!tp)return"";const e=d[tid];
+    return `<div class="essay-row" style="--tc:${COLORS[type.id]}">
+      <div class="info">
+        <div class="tp">${esc(type.name)} · Topic ${tid.split("-")[1]} ${e.done?"· ✓ completed":"· draft"}</div>
+        <div class="tt">“${esc(tp.task.length>110?tp.task.slice(0,110)+"…":tp.task)}”</div>
+        <div class="meta">${words(e.text)} words · updated ${fmtDate(e.updated||Date.now())}</div>
+      </div>
+      <a class="btn btn-soft btn-sm" href="#practice-${tid}">✍️ Continue</a>
+      <button type="button" class="btn btn-ghost btn-sm" onclick="App.exportEssay('${tid}','docx')">⬇ .docx</button>
+      <button type="button" class="btn btn-ghost btn-sm" onclick="App.exportEssay('${tid}','doc')">⬇ .doc</button>
+      <button type="button" class="btn btn-ghost btn-sm" onclick="App.del('${tid}')">🗑</button>
+    </div>`}).join("");
+  document.getElementById("app").innerHTML=`
+  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px">
+    <h1>My Essays</h1>
+    ${ids.length?`<button type="button" class="btn btn-ghost btn-sm" style="margin-left:auto" onclick="App.exportAll('docx')">⬇ Download all (.docx)</button>
+    <button type="button" class="btn btn-ghost btn-sm" onclick="App.exportAll('doc')">⬇ Download all (.doc)</button>`:""}
+  </div>
+  ${rows||`<div class="empty"><div class="big">📝</div><p>No saved essays yet.<br>Pick an essay type on the home page and start writing — your text is saved automatically.</p>
+  <br><a class="btn btn-primary" href="#home">Back to essay types</a></div>`}`;
+}
+
+/* ---------- clock ---------- */
+function drawClock(){
+  const el=document.getElementById("clock");if(!el)return;
+  const m=Math.floor(timer.left/60),s=timer.left%60;
+  el.textContent=m+":"+String(s).padStart(2,"0");
+  const box=document.getElementById("timerBox");
+  box.classList.toggle("warn",timer.left<=300&&timer.left>0);
+  box.classList.toggle("out",timer.left<=0);
+  document.getElementById("tPlay").textContent=timer.run?"⏸":"▶";
+}
+
+/* ---------- App API ---------- */
+const App={
+  tPlay(){
+    if(timer.run){timer.run=false;clearInterval(timer.int);timer.int=null;store.save(timer.tid,{timeLeft:timer.left});toast("Timer paused — time saved")}
+    else{
+      if(timer.left<=0)timer.left=2400;
+      timer.run=true;
+      timer.int=setInterval(()=>{timer.left--;
+        if(timer.left%10===0)store.save(timer.tid,{timeLeft:timer.left});
+        if(timer.left<=0){timer.left=0;timer.run=false;clearInterval(timer.int);timer.int=null;toast("⏰ Time's up! Exam conditions — 40 minutes. You can still finish and self-check.")}
+        drawClock()},1000);
+      toast("The clock is ticking — 40 minutes!")
+    }
+    drawClock();
+  },
+  tReset(){timer.run=false;clearInterval(timer.int);timer.int=null;timer.left=2400;store.save(timer.tid,{timeLeft:2400});drawClock();toast("Timer reset: 40:00")},
+  typing(tid,silent){
+    const ta=document.getElementById("essay");if(!ta)return;
+    const w=words(ta.value);const tgt=targetWords(tid);
+    const wc=document.getElementById("wcount");
+    wc.textContent=w+" words · target "+tgt+"+";
+    wc.classList.toggle("ok",w>=tgt);
+    clearTimeout(App._sv);
+    App._sv=setTimeout(()=>{store.save(tid,{text:ta.value});
+      const n=document.getElementById("savedNote");if(n)n.textContent="Saved just now ✓"},600);
+  },
+  plan(tid,cb){const e=store.entry(tid)||{};const plan=e.plan||{};plan[cb.dataset.plan]=cb.checked;store.save(tid,{plan:plan})},
+  phTab(tid,i,btn){
+    const type=T(tid);const list=type.phraseCols[i][1];
+    document.getElementById("phList").innerHTML=list.map(p=>`<button type="button" class="ph-item" onclick="App.ins('${tid}',this.dataset.p)" data-p="${esc(p)}">${esc(p)}<span class="ins">＋</span></button>`).join("");
+    document.querySelectorAll(".ph-tab").forEach(b=>b.classList.toggle("active",+b.dataset.ph===i));
+  },
+  ins(tid,phrase){
+    const ta=document.getElementById("essay");if(!ta)return;
+    const s=ta.selectionStart,en=ta.selectionEnd;
+    ta.setRangeText(phrase+" ",s,en,"end");ta.focus();
+    App.typing(tid);
+    toast("Phrase inserted ✓");
+  },
+  finish(tid){
+    const type=T(tid);const e=store.entry(tid)||{};
+    const w=words((document.getElementById("essay")||{}).value||e.text||"");
+    const tgt=targetWords(tid);
+    const chk=type.checklist.map((c,i)=>`<label><input type="checkbox" class="fc" data-i="${i}"><span>${esc(c)}</span></label>`).join("");
+    const ov=document.getElementById("overlay");
+    document.getElementById("modal").innerHTML=`
+      <h2>Final check ✓</h2>
+      <div class="sub">${w>=tgt?"✅ Length: <b>"+w+"</b> words (target "+tgt+"+)":"⚠️ Length: <b>"+w+"</b> words out of the recommended "+tgt+"+ — in the exam this costs marks!"}<br>Go through the Band 7.5 checklist:</div>
+      <div class="chk">${chk}</div>
+      <div class="mrow">
+        <button type="button" class="btn btn-ghost" onclick="App.closeModal()">Keep working</button>
+        <button type="button" class="btn btn-ok" id="doneBtn" onclick="App.complete('${tid}')">Show the Band 7.5 model →</button>
+      </div>`;
+    ov.classList.add("open");
+    const doneBtn=document.getElementById("doneBtn");
+    const upd=()=>{const all=[...document.querySelectorAll(".fc")].every(c=>c.checked);doneBtn.disabled=!all;doneBtn.textContent=all?"Show the Band 7.5 model →":"Tick every item ✓"};
+    document.querySelectorAll(".fc").forEach(c=>c.addEventListener("change",upd));upd();
+  },
+  closeModal(){document.getElementById("overlay").classList.remove("open")},
+  complete(tid){
+    const ta=document.getElementById("essay");
+    store.save(tid,{text:ta?ta.value:"",done:true,timeLeft:timer.left});
+    App.closeModal();
+    document.getElementById("modelSlot").innerHTML=modelHtml(TP(tid));
+    document.getElementById("modelSlot").scrollIntoView({behavior:"smooth"});
+    toast("🎉 Essay completed! Compare it with the model.");
+  },
+  clearEssay(tid){
+    if(!confirm("Clear this essay's text? This cannot be undone."))return;
+    store.save(tid,{text:"",done:false,plan:{},timeLeft:2400});
+    renderPractice(tid);toast("Draft cleared");
+  },
+  del(tid){
+    if(!confirm("Delete this essay permanently?"))return;
+    store.remove(tid);renderMy();toast("Essay deleted");
+  },
+  essayText(tid){
+    const ta=document.getElementById("essay");
+    if(cur.view==="practice"&&cur.tid===tid&&ta)return ta.value;
+    const e=store.entry(tid);return (e&&e.text)||"";
+  },
+  exportEssay(tid,fmt){
+    const type=T(tid),tp=TP(tid);
+    const text=App.essayText(tid);
+    if(!text.trim()){toast("⚠️ Nothing to export — the text is empty");return}
+    const base="IELTS_WT2_"+type.name.replace(/[^A-Za-z]+/g,"-")+"_Topic"+tid.split("-")[1];
+    if(fmt==="docx")download(buildDocx([{type:type,tp:tp,text:text}]),base+".docx");
+    else download(buildDoc([{type:type,tp:tp,text:text}]),base+".doc");
+    toast("⬇ Word file downloaded");
+  },
+  exportAll(fmt){
+    const d=store.get();
+    const ids=Object.keys(d).filter(k=>d[k].text&&d[k].text.trim()).sort((a,b)=>(d[b].updated||0)-(d[a].updated||0));
+    if(!ids.length){toast("⚠️ No saved essays yet");return}
+    const items=ids.map(tid=>({type:T(tid),tp:TP(tid),text:d[tid].text})).filter(x=>x.type&&x.tp);
+    if(fmt==="docx")download(buildDocx(items),"IELTS_WT2_All_Essays.docx");
+    else download(buildDoc(items),"IELTS_WT2_All_Essays.doc");
+    toast("⬇ All essays downloaded ("+items.length+")");
+  }
+};
+window.App=App;
+
+/* ---------- DOCX (minimal generator) ---------- */
+function crc32(buf){
+  if(!crc32.t){crc32.t=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;crc32.t[n]=c>>>0}}
+  let c=0xFFFFFFFF;for(let i=0;i<buf.length;i++)c=crc32.t[(c^buf[i])&255]^(c>>>8);return (c^0xFFFFFFFF)>>>0;
+}
+function buildZip(files){
+  const enc=new TextEncoder(),parts=[],central=[];let off=0;
+  files.forEach(f=>{
+    const nm=enc.encode(f.name),d=f.data,crc=crc32(d);
+    const h=new DataView(new ArrayBuffer(30));
+    h.setUint32(0,0x04034b50,true);h.setUint16(4,20,true);
+    h.setUint32(14,crc,true);h.setUint32(18,d.length,true);h.setUint32(22,d.length,true);
+    h.setUint16(26,nm.length,true);
+    parts.push(new Uint8Array(h.buffer),nm,d);
+    const cv=new DataView(new ArrayBuffer(46));
+    cv.setUint32(0,0x02014b50,true);cv.setUint16(4,20,true);cv.setUint16(6,20,true);
+    cv.setUint32(16,crc,true);cv.setUint32(20,d.length,true);cv.setUint32(24,d.length,true);
+    cv.setUint16(28,nm.length,true);cv.setUint32(42,off,true);
+    central.push(new Uint8Array(cv.buffer),nm);
+    off+=30+nm.length+d.length;
+  });
+  const cdStart=off;let cdSize=0;central.forEach(u=>cdSize+=u.length);
+  const e=new DataView(new ArrayBuffer(22));
+  e.setUint32(0,0x06054b50,true);e.setUint16(8,files.length,true);e.setUint16(10,files.length,true);
+  e.setUint32(12,cdSize,true);e.setUint32(16,cdStart,true);
+  parts.push(...central,new Uint8Array(e.buffer));
+  return new Blob(parts,{type:"application/vnd.openxmlformats-officedocument.wordprocessingml.document"});
+}
+function buildDocx(items){
+  const enc=new TextEncoder();
+  const xesc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  const para=(s,bold,size)=>`<w:p><w:r><w:rPr>${bold?"<w:b/>":""}<w:sz w:val="${size||22}"/></w:rPr><w:t xml:space="preserve">${xesc(s)}</w:t></w:r></w:p>`;
+  const today=new Date().toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});
+  let body="";
+  items.forEach((it,idx)=>{
+    if(idx>0)body+=para("",false,20);
+    body+=para("IELTS Writing Task 2 — "+it.type.name,true,32);
+    body+=para("Topic: "+it.tp.task,false,24);
+    body+=para("Date: "+today+"   ·   Words: "+words(it.text),false,20);
+    body+=para("",false,20);
+    body+=para("My essay",true,26);
+    it.text.split(/\n+/).filter(p=>p.trim()).forEach(p=>{body+=para(p.trim(),false,24)});
+  });
+  const doc=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>${body}<w:sectPr/></w:body></w:document>`;
+  const ct=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>`;
+  const rels=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>`;
+  return buildZip([
+    {name:"[Content_Types].xml",data:enc.encode(ct)},
+    {name:"_rels/.rels",data:enc.encode(rels)},
+    {name:"word/document.xml",data:enc.encode(doc)}
+  ]);
+}
+/* ---------- DOC (Word-compatible HTML) ---------- */
+function buildDoc(items){
+  const xesc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  const today=new Date().toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});
+  let body="";
+  items.forEach((it,idx)=>{
+    body+=`<h2 style="font-family:Arial">IELTS Writing Task 2 — ${xesc(it.type.name)}</h2>
+<p style="font-family:Georgia"><b>Topic:</b> ${xesc(it.tp.task)}</p>
+<p style="font-family:Arial;color:#666;font-size:12px">Date: ${today} &nbsp;·&nbsp; Words: ${words(it.text)}</p>
+<h3 style="font-family:Arial">My essay</h3>`;
+    it.text.split(/\n+/).filter(p=>p.trim()).forEach(p=>{body+=`<p style="font-family:Georgia;font-size:13pt;line-height:1.6">${xesc(p.trim())}</p>`});
+    if(idx<items.length-1)body+=`<br style="page-break-before:always">`;
+  });
+  const html=`<html xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="UTF-8"></head><body>${body}</body></html>`;
+  return new Blob([html],{type:"application/msword"});
+}
+function download(blob,fname){
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=fname;
+  document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},600);
+}
+
+/* overlay click-outside to close */
+document.getElementById("overlay").addEventListener("click",e=>{if(e.target.id==="overlay")App.closeModal()});
+
+go();
+</script>
+</body>
+</html>
